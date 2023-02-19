@@ -19,14 +19,15 @@ import java.util.Objects;
 
 public class ReadYAMLParser {
 
-    public void read(String filename) throws FileNotFoundException, IOException {
+    public ArrayDeque<StudyGroup> read(String filename) throws FileNotFoundException, IOException {
         //тырпы
         filename = System.getenv("PWD")+filename;
         FileReader file = new FileReader(filename);
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
         ArrayDeque<StudyGroup> collectionFromFile = objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(ArrayDeque.class, StudyGroup.class));
-
         System.out.println(collectionFromFile);
+        return collectionFromFile;
+
 
         //snakeyaml is кринж
 //        File file = new File(System.getenv("PWD")+ filename);

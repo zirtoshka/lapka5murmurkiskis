@@ -14,8 +14,8 @@ public class Main {
 //        YamlReader reader = new YamlReader();
 //        Map<String, Object> config = reader.read("/Users/zirtoshka/прога/vehvehveh.yml");
 //        System.out.println(config);
-        ReadYAMLParser yaml = new ReadYAMLParser();
-        yaml.read("/test.yml");
+        CollectionManager myCollection = new CollectionManager("/test.yml");
+
 
     }
 }
