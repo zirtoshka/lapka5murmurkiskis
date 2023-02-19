@@ -21,7 +21,8 @@ public class ReadYAMLParser {
 
     public void read(String filename) throws FileNotFoundException, IOException {
         //тырпы
-        File file = new File(System.getenv("PWD")+filename);
+        filename = System.getenv("PWD")+filename;
+        FileReader file = new FileReader(filename);
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
         ArrayDeque<StudyGroup> collectionFromFile = objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(ArrayDeque.class, StudyGroup.class));
 
