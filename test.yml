@@ -3,7 +3,7 @@
   coordinates:
     coordinatesX: '1.0'
     coordinatesY: '3'
-  creationDate:
+#  creationDate:
   studentsCount: '30'
   shouldBeExpelled: '1'
   averageMark: '5'
@@ -19,7 +19,7 @@
   coordinates:
     coordinatesX: '1.0'
     coordinatesY: '3'
-  creationDate:
+#  creationDate:
   studentsCount: '30'
   shouldBeExpelled: '1'
   averageMark: '5'

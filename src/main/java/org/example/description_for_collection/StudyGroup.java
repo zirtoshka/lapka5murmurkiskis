@@ -60,13 +60,13 @@ public class StudyGroup {
         return coordinates;
     }
     //дата должна сама генерироваться
-//    public void setCreationDate(LocalDateTime creationDate) {
-//        this.creationDate = creationDate;
-//    }
-//
-//    public LocalDateTime getCreationDate() {
-//        return creationDate;
-//    }
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
 
     public void setGroupAdmin(Person groupAdmin) {
         this.groupAdmin = groupAdmin;

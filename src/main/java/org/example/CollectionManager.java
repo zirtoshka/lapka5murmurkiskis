@@ -17,6 +17,9 @@ public class CollectionManager {
         this.creationDate = LocalDateTime.now();
         ReadYAMLParser yaml = new ReadYAMLParser();
         this.studyGroupCollection = yaml.read(filename);
+        for (StudyGroup a: studyGroupCollection ){
+            a.setCreationDate(creationDate);
+        }
     }
 
 
