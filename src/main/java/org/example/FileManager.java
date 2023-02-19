@@ -12,8 +12,9 @@ public class FileManager {
         this.fileName=fileName;
     }
 
-    public ArrayDeque<StudyGroup> readCollection(){
-        return ReadYAMLParser.read(fileName);
+
+    public String getFileName(){
+        return fileName;
     }
 
 }

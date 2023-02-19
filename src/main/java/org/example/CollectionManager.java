@@ -9,13 +9,13 @@ public class CollectionManager {
     private ArrayDeque<StudyGroup> StudyGroupCollection = new ArrayDeque<>();
 
 
-    public CollectionManager(FileManager fileManager){
-        this.fileManager=fileManager;
-        loadCollection();
-    }
+//    public CollectionManager(FileManager fileManager){
+//        this.fileManager=fileManager;
+//        loadCollection();
+//    }
 
-    private void loadCollection(){
-        StudyGroupCollection=fileManager.readCollection();
-    }
+//    private void loadCollection(){
+//        StudyGroupCollection=fileManager.readCollection();
+//    }
 
 }

@@ -1,12 +1,21 @@
 package org.example;
 
+import org.example.description_for_collection.StudyGroup;
+import org.example.parserYAML.ReadYAMLParser;
+import org.yaml.snakeyaml.Yaml;
+
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayDeque;
 import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        YamlReader reader = new YamlReader();
-        Map<String, Object> config = reader.read("/Users/zirtoshka/прога/vehvehveh.yml");
-        System.out.println(config);
+//        YamlReader reader = new YamlReader();
+//        Map<String, Object> config = reader.read("/Users/zirtoshka/прога/vehvehveh.yml");
+//        System.out.println(config);
+        ReadYAMLParser yaml = new ReadYAMLParser();
+        yaml.read("/test.yml");
+
     }
 }
