@@ -9,18 +9,16 @@ import java.util.ArrayDeque;
 
 public class CollectionManager {
     private ArrayDeque<StudyGroup> studyGroupCollection;
-    private final LocalDateTime creationDate;
-    private final String filename;
 
-    public CollectionManager(String filename) throws IOException {
-        this.filename=filename;
-        this.creationDate = LocalDateTime.now();
-        ReadYAMLParser yaml = new ReadYAMLParser();
-        this.studyGroupCollection = yaml.read(filename);
-        for (StudyGroup a: studyGroupCollection ){
-            a.setCreationDate(creationDate);
-        }
+
+    public CollectionManager(){
     }
+
+
+
+
+    //запихнуть в метод??????
+
 
 
 

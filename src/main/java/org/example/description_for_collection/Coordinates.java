@@ -24,4 +24,9 @@ public class Coordinates {
     public Float getCoordinatesY() {
         return coordinatesY;
     }
+
+    @Override
+    public String toString() {
+        return getCoordinatesX()+" "+getCoordinatesY();
+    }
 }

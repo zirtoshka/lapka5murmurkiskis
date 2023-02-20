@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
 import org.example.description_for_collection.StudyGroup;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.yaml.snakeyaml.Yaml;
 
 
@@ -24,6 +25,7 @@ public class ReadYAMLParser {
         filename = System.getenv("PWD")+filename;
         FileReader file = new FileReader(filename);
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
+        objectMapper.registerModule(new JavaTimeModule());
         ArrayDeque<StudyGroup> collectionFromFile = objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(ArrayDeque.class, StudyGroup.class));
         System.out.println(collectionFromFile);
         return collectionFromFile;
