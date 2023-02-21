@@ -1,5 +1,5 @@
 - id: '4'
-  name: 'gondons'
+  name: 'loool'
   coordinates:
     coordinatesX: '1.0'
     coordinatesY: '3'
@@ -9,13 +9,13 @@
   averageMark: '5'
   semesterEnum: 'FIRST'
   groupAdmin:
-    name: 'xuy'
+    name: 'puk'
     birthday: '2003-03-21'
     eyeColor: 'GREEN'
     hairColor: 'RED'
     nationality: 'NORTH_KOREA'
 - id: '5'
-  name: 'ccccc'
+  name: 'koook'
   coordinates:
     coordinatesX: '1.0'
     coordinatesY: '3'
@@ -25,7 +25,7 @@
   averageMark: '5'
   semesterEnum: 'FIRST'
   groupAdmin:
-    name: 'xuy'
+    name: 'sos'
     birthday: '2003-03-21'
     eyeColor: 'GREEN'
     hairColor: 'RED'
