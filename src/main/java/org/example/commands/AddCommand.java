@@ -20,6 +20,7 @@ public class AddCommand  extends Command{
 
             }
 //        } catch ()
+        return false;
     }
 
 
