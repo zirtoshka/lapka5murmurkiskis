@@ -1,13 +1,10 @@
 package org.example;
 
 import org.example.description_for_collection.StudyGroup;
-import org.example.parserYAML.ReadYAMLParser;
 import org.example.parserYAML.WriteYAMLParses;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.ArrayDeque;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -20,7 +17,7 @@ public class CollectionManager {
     public CollectionManager(){
     }
 
-    public void load() throws IOException{
+    public void loadFromFile() throws IOException{
         this.studyGroupCollection = fileManager.loadFromFile(fileManager.getFileName());
     }
 
