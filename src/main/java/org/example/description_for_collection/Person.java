@@ -57,5 +57,14 @@ public class Person {
         return nationality;
     }
 
-
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", birthday=" + birthday +
+                ", eyeColor=" + eyeColor +
+                ", hairColor=" + hairColor +
+                ", nationality=" + nationality +
+                '}';
+    }
 }
