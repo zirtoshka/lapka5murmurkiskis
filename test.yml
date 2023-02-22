@@ -1,5 +1,5 @@
 ---
-- id: 4
+- id: 1
   name: "loool"
   coordinates:
     coordinatesX: 1.0
@@ -22,7 +22,7 @@
     eyeColor: "GREEN"
     hairColor: "RED"
     nationality: "NORTH_KOREA"
-- id: 5
+- id: 2
   name: "koook"
   coordinates:
     coordinatesX: 1.0

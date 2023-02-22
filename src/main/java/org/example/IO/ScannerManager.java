@@ -21,6 +21,7 @@ public class ScannerManager {
         }
         return name;
     }
+    public String askGroupName(){return null;}
     public String askPersonName(){
         return new String();
     }
@@ -34,7 +35,7 @@ public class ScannerManager {
         return null;
     }
 
-    public Coordinates askCoordinates(){
+    public Coordinates askCoordinates(int x, int y){
         return null;
     }
 

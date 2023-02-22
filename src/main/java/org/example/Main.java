@@ -18,6 +18,7 @@ public class Main {
         for (StudyGroup a: myCollection.getStudyGroupCollection()) {
             System.out.println(a.getCreationDate());
         }
+        myCollection.generateId();
 
 
     }

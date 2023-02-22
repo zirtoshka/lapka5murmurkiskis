@@ -16,17 +16,17 @@ public class StudyGroup {
     private Semester semesterEnum; //Поле не может быть null
     private Person groupAdmin; //Поле может быть null
 
-//    public StudyGroup(Integer id, String name, Coordinates coordinates, java.time.LocalDateTime creationDate, int studentsCount, Integer shouldBeExpelled, double averageMark, Semester semesterEnum, Person groupAdmin) {
-//        this.id = id;
-//        this.name = name;
-//        this.coordinates = coordinates;
-//        this.creationDate = creationDate;
-//        this.studentsCount = studentsCount;
-//        this.shouldBeExpelled = shouldBeExpelled;
-//        this.averageMark = averageMark;
-//        this.semesterEnum = semesterEnum;
-//        this.groupAdmin = groupAdmin;
-//    }
+    public StudyGroup(Integer id, String name, Coordinates coordinates, java.time.LocalDateTime creationDate, int studentsCount, Integer shouldBeExpelled, double averageMark, Semester semesterEnum, Person groupAdmin) {
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = creationDate;
+        this.studentsCount = studentsCount;
+        this.shouldBeExpelled = shouldBeExpelled;
+        this.averageMark = averageMark;
+        this.semesterEnum = semesterEnum;
+        this.groupAdmin = groupAdmin;
+    }
 
     public void setName(String name) {
         this.name = name;
