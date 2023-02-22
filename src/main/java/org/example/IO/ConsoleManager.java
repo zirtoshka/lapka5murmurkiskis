@@ -15,9 +15,9 @@ public class ConsoleManager {
 
     public int launchCommand(String[] userCommand){
 //        switch ()
-        return null
+        return 0;
     }
     public int scriptMode(String ppp){
-        return null;
+        return 0;
     }
 }
