@@ -18,12 +18,15 @@ public class CollectionManager {
     }
 
     public void loadFromFile() throws IOException{
-        this.studyGroupCollection = fileManager.loadFromFile(fileManager.getFileName());
+        this.studyGroupCollection = fileManager.loadFromFile();
     }
 
     public void writeToFile() throws IOException {
-        WriteYAMLParses writeYAMLParses=new WriteYAMLParses();
-        writeYAMLParses.write(studyGroupCollection);
+        fileManager.write(studyGroupCollection);
+    }
+
+    public ArrayDeque<StudyGroup> getStudyGroupCollection(){
+        return  studyGroupCollection;
     }
 
 

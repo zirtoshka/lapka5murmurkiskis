@@ -20,10 +20,10 @@ import java.util.Objects;
 
 public class ReadYAMLParser {
 
-    public ArrayDeque<StudyGroup> read(String filename) throws FileNotFoundException, IOException {
+    public ArrayDeque<StudyGroup> read(String path) throws FileNotFoundException, IOException {
         //тырпы
-        filename = System.getenv("PWD")+filename;
-        FileReader file = new FileReader(filename);
+//        filename = System.getenv("PWD")+filename;
+        FileReader file = new FileReader(path);
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
         objectMapper.registerModule(new JavaTimeModule());
         ArrayDeque<StudyGroup> collectionFromFile = objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(ArrayDeque.class, StudyGroup.class));

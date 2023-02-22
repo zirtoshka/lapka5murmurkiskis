@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.description_for_collection.StudyGroup;
+
 import java.io.IOException;
 
 public class Main {
@@ -12,6 +14,10 @@ public class Main {
         CollectionManager myCollection = new CollectionManager();
         myCollection.loadFromFile();
         myCollection.writeToFile();
+
+        for (StudyGroup a: myCollection.getStudyGroupCollection()) {
+            System.out.println(a.getCreationDate());
+        }
 
 
     }

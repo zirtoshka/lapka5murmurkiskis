@@ -16,7 +16,7 @@ public class WriteYAMLParses {
     public void write(ArrayDeque<StudyGroup> studyGroupArrayDeque) throws  IOException {
         //тырпы
 //        String path  = System.getenv("PWD")+"/pukpuk.yml";
-        String path =  "/Users/zirtoshka/IdeaProjects/blydskiyxuy5/pukpuk.yml";
+        String path =  "/Users/zirtoshka/IdeaProjects/lapka5murmurkiskis/test.yml";
         System.out.println(path);
         File file = new File(path);
 

@@ -1,6 +1,6 @@
 ---
 - id: 4
-  name: "gondons"
+  name: "loool"
   coordinates:
     coordinatesX: 1.0
     coordinatesY: 3.0
@@ -17,13 +17,13 @@
   averageMark: 5.0
   semesterEnum: "FIRST"
   groupAdmin:
-    name: "xuy"
+    name: "puk"
     birthday: 1048204800000
     eyeColor: "GREEN"
     hairColor: "RED"
     nationality: "NORTH_KOREA"
 - id: 5
-  name: "ccccc"
+  name: "koook"
   coordinates:
     coordinatesX: 1.0
     coordinatesY: 3.0
@@ -40,7 +40,7 @@
   averageMark: 5.0
   semesterEnum: "FIRST"
   groupAdmin:
-    name: "xuy"
+    name: "sos"
     birthday: 1048204800000
     eyeColor: "GREEN"
     hairColor: "RED"
