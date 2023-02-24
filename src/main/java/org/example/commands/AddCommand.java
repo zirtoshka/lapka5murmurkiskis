@@ -23,7 +23,7 @@ public class AddCommand  extends Command{
                              collectionManager.generateId(),
                              scannerManager.askGroupName(),
                                 scannerManager.askCoordinates(),
-                                collectionManager.getTime().now(),
+                                collectionManager.getLastInitTime().now(),
                                 scannerManager.askStudentCount(),
                                 scannerManager.askShouldBeExpelled(),
                                 scannerManager.askAvarageMark(),

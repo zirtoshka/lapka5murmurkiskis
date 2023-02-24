@@ -16,10 +16,14 @@ public class CollectionManager {
     private Set<Integer> idSet = new HashSet<>(); //буду чекать среди сущ id
     private Integer newId = 1;
     FileManager fileManager = new FileManager(new Scanner(System.in).nextLine());
-    private java.time.LocalDateTime localDateTime;
+    private java.time.LocalDateTime lastInitTime;
+    private LocalDateTime lastSaveTime;
+
 
 
     public CollectionManager() {
+        this.lastInitTime=null;
+        this.lastSaveTime=null;
     }
 
     public void loadFromFile() throws IOException {
@@ -47,9 +51,18 @@ public class CollectionManager {
     public void addToCollection(StudyGroup studyGroupFromUser){
         studyGroupCollection.addLast(studyGroupFromUser);
     }
-    public LocalDateTime getTime(){
-        return localDateTime;
+    public LocalDateTime getLastInitTime(){
+        return lastInitTime;
     }
+    public LocalDateTime getLastSaveTime(){return lastSaveTime;}
+    public String collectionType(){
+        return studyGroupCollection.getClass().getName();
+    }
+    public int collectionSize(){
+        return studyGroupCollection.size();
+    }
+
+
 
 
 

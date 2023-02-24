@@ -12,6 +12,9 @@ public class ConsoleManager {
         this.commandManager=commandManager;
         this.scannerManager=scannerManager;
     }
+    public static void printInfo(Object message) {
+        System.out.println("\u001B[35m" + message + "\u001B[0m");
+    }
 
     public int launchCommand(String[] userCommand){
 //        switch ()
