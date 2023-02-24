@@ -2,8 +2,6 @@ package org.example.IO;
 
 import org.example.description_for_collection.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -81,12 +79,7 @@ public class ScannerManager {
     }
 
     public Person askPerson(){
-        Person admin = new Person();
-        String name = askPersonName();
-        admin.setName(name);
-        Date date = askBirthday();
-        admin.setBirthday(date);
-        return admin;
+        return new Person(askPersonName(),askBirthday(),askEyeColor(),askHairColor(),askNationality());
 
         //askBirthday
         //askEyeColor
@@ -99,14 +92,41 @@ public class ScannerManager {
         return date;
     }
     public ColorEye askEyeColor(){
-        return ColorEye.BROWN;
+        String strEyeColor;
+        ColorEye colorEye;
+        while (true){
+            System.out.println("Color eye list - "+ColorEye.getList());
+            System.out.println("Enter your color eye:");
+            strEyeColor=scanner.nextLine().trim();
+            colorEye=ColorEye.valueOf(strEyeColor.toUpperCase());
+            break;
+        }
+        return colorEye;
     }
     public ColorHair askHairColor(){
-        return ColorHair.RED;
+        String strHairColor;
+        ColorHair colorHair;
+        while (true){
+            System.out.println("Color hair list - "+ColorHair.getList());
+            System.out.println("Enter your color hair:");
+            strHairColor=scanner.nextLine().trim();
+            colorHair=ColorHair.valueOf(strHairColor.toUpperCase());
+            break;
+        }
+        return colorHair;
     }
 
-    public Country askNationakity(){
-        return Country.NORTH_KOREA;
+    public Country askNationality(){
+        String strCountry;
+        Country country;
+        while (true){
+            System.out.println("Country list - "+Country.getList());
+            System.out.println("Enter your county:");
+            strCountry=scanner.nextLine().trim();
+            country=Country.valueOf(strCountry.toUpperCase());
+            break;
+        }
+        return country;
     }
 
 

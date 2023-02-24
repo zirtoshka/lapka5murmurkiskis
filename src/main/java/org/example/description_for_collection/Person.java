@@ -9,13 +9,14 @@ public class Person {
     private ColorHair hairColor; //Поле может быть null
     private Country nationality; //Поле может быть null
 
-//    public Person(String name, java.util.Date birthday, ColorEye eyeColor, ColorHair hairColor, Country nationality) {
-//        this.name = name;
-//        this.birthday = birthday;
-//        this.eyeColor = eyeColor;
-//        this.hairColor = hairColor;
-//        this.nationality = nationality;
-//    }
+    public Person(){}
+    public Person(String name, java.util.Date birthday, ColorEye eyeColor, ColorHair hairColor, Country nationality) {
+        this.name = name;
+        this.birthday = birthday;
+        this.eyeColor = eyeColor;
+        this.hairColor = hairColor;
+        this.nationality = nationality;
+    }
 
     public void setName(String name) {
         this.name = name;
