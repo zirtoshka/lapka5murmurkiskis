@@ -15,6 +15,7 @@ public class StudyGroup {
     private double averageMark; //Значение поля должно быть больше 0
     private Semester semesterEnum; //Поле не может быть null
     private Person groupAdmin; //Поле может быть null
+    public StudyGroup(){}
 
     public StudyGroup(Integer id, String name, Coordinates coordinates, java.time.LocalDateTime creationDate, int studentsCount, Integer shouldBeExpelled, double averageMark, Semester semesterEnum, Person groupAdmin) {
         this.id = id;

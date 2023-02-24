@@ -2,6 +2,9 @@ package org.example.IO;
 
 import org.example.description_for_collection.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Scanner;
 
 public class ScannerManager {
@@ -16,27 +19,50 @@ public class ScannerManager {
     public String askName(String inputTitle, int minLength, String typeOfName){
         String name;
         while (true){
+            System.out.println(inputTitle);
             name = scanner.nextLine().trim();
+            //exceptions
             break;
         }
         return name;
     }
-    public String askGroupName(){return null;}
+    public String askGroupName(){
+        return askName("Enter Study Group name", 0, "Study Group name");}
     public String askPersonName(){
-        return new String();
+        return askName("Enter Admin name:", 0,"Person name");
     }
 
 
     public Double askCoordinatesX(){
-        return null;
+        String strX;
+        Double x;
+        while (true){
+            //exceptions
+            System.out.println("Enter X coord: ");
+            strX = scanner.nextLine().trim();
+            x=Double.parseDouble(strX);
+            break;
+        }
+        return x;
     }
 
     public Float askCoordinatesY(){
-        return null;
+        String strY;
+        Float y;
+        while (true){
+            //exceptions
+            System.out.println("Enter Y coord:");
+            strY = scanner.nextLine().trim();
+            y = Float.parseFloat(strY);
+            break;
+        }
+        return y;
     }
 
-    public Coordinates askCoordinates(int x, int y){
-        return null;
+    public Coordinates askCoordinates(){
+        Double x = askCoordinatesX();
+        Float y = askCoordinatesY();
+        return new Coordinates(x,y);
     }
 
     public int askStudentCount(){
@@ -44,35 +70,43 @@ public class ScannerManager {
     }
 
     public Integer askShouldBeExpelled(){
-        return null;
+        return 3;
     }
 
     public double askAvarageMark(){
-        return 3;
+        return 5;
     }
     public Semester askSemesterEnum(){
         return Semester.FIFTH;
     }
 
     public Person askPerson(){
-        return null;
+        Person admin = new Person();
+        String name = askPersonName();
+        admin.setName(name);
+        Date date = askBirthday();
+        admin.setBirthday(date);
+        return admin;
+
         //askBirthday
         //askEyeColor
         //askHairColor
         //askNationakity
     }
     public java.util.Date askBirthday(){
-        return null;
+        //xp[ how wtf
+        Date date = new Date("January 1, 1970");
+        return date;
     }
     public ColorEye askEyeColor(){
-        return null;
+        return ColorEye.BROWN;
     }
     public ColorHair askHairColor(){
-        return null;
+        return ColorHair.RED;
     }
 
     public Country askNationakity(){
-        return null;
+        return Country.NORTH_KOREA;
     }
 
 

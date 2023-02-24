@@ -22,18 +22,13 @@ public class AddCommand  extends Command{
                         new StudyGroup(
                              collectionManager.generateId(),
                              scannerManager.askGroupName(),
-                                scannerManager.askCoordinates(scannerManager.askCoordinatesX(),
-                                        scannerManager.askCoordinatesY()),
+                                scannerManager.askCoordinates(),
                                 collectionManager.getTime().now(),
                                 scannerManager.askStudentCount(),
                                 scannerManager.askShouldBeExpelled(),
                                 scannerManager.askAvarageMark(),
                                 scannerManager.askSemesterEnum(),
-                                scannerManager.askPerson(scannerManager.askGroupName(),
-                                        scannerManager.askBirthday(),
-                                        scannerManager.askEyeColor(),
-                                        scannerManager.askHairColor(),
-                                        scannerManager.askNationakity()))
+                                scannerManager.askPerson())
                 );
             }
 //        } catch ()

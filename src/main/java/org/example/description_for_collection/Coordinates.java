@@ -4,10 +4,12 @@ public class Coordinates {
     private Double coordinatesX; //Максимальное значение поля: 576, Поле не может быть null
     private Float coordinatesY; //Значение поля должно быть больше -596, Поле не может быть null
 
-//    public Coordinates(Double x, Float y){
-//        this.x=x;
-//        this.y=y;
-//    }
+
+    public Coordinates(){}
+    public Coordinates(Double x, Float y){
+        this.coordinatesX=x;
+        this.coordinatesY=y;
+    }
 
     public void setX(Double coordinatesX){
         this.coordinatesX=coordinatesX;
