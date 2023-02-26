@@ -28,9 +28,9 @@ public class Main {
         }
         myCollection.generateId();
 //
-//        AddCommand add = new AddCommand(myCollection,scannerManager);
-//        add.execute("ssss");
-//        System.out.println(myCollection.getStudyGroupCollection().getLast());
+        AddCommand add = new AddCommand(myCollection,scannerManager);
+        add.execute("ssss");
+        System.out.println(myCollection.getStudyGroupCollection().getLast());
 
         InfoCommand info = new InfoCommand(myCollection);
         info.execute("ddd");

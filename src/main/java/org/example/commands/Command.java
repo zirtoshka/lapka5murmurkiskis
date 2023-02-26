@@ -23,11 +23,11 @@ public abstract class Command {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {return true;}
-        if (obj==null || getClass()!=obj.getClass()){return false;}
-        Command command = (Command) obj;
-        return Objects.equals(name,command.name)&&Objects.equals(discription,command.discription);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Command command = (Command) o;
+        return name.equals(command.name) && discription.equals(command.discription);
     }
 
     @Override
@@ -39,6 +39,6 @@ public abstract class Command {
 
     @Override
     public int hashCode() {
-        return name.hashCode()+discription.hashCode();
+        return Objects.hash(name, discription);
     }
 }

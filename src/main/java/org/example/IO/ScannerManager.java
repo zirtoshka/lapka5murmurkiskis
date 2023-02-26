@@ -88,7 +88,15 @@ public class ScannerManager {
     }
     public java.util.Date askBirthday(){
         //xp[ how wtf
-        Date date = new Date("January 1, 1970");
+        String strDate;
+        Date date;
+        while (true){
+            System.out.println("You can use format - 'January 19, 1970'");
+            System.out.println("Enter your birthday for admin: ");
+            strDate = scanner.nextLine().trim();
+            date = new Date(strDate);
+            break;
+        }
         return date;
     }
     public ColorEye askEyeColor(){
@@ -128,8 +136,4 @@ public class ScannerManager {
         }
         return country;
     }
-
-
-
-
 }
