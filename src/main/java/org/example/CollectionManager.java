@@ -14,6 +14,11 @@ import java.util.Set;
 public class CollectionManager {
     private ArrayDeque<StudyGroup> studyGroupCollection;
     private Set<Integer> idSet = new HashSet<>(); //буду чекать среди сущ id
+//    public void getIdSet(){
+//        for(Integer a:idSet){
+//            System.out.print(a+" ");
+//        }
+//    }
     private Integer newId = 1;
     FileManager fileManager = new FileManager(new Scanner(System.in).nextLine());
     private java.time.LocalDateTime lastInitTime;
@@ -61,10 +66,29 @@ public class CollectionManager {
     public int collectionSize(){
         return studyGroupCollection.size();
     }
+    public void clearCollection(){ studyGroupCollection.clear();}
+    public void saveCollection() throws IOException {
+        fileManager.write(studyGroupCollection); //зачем-то хочет бросатьтся хз
+        lastSaveTime = LocalDateTime.now();
+    }
+    public String headOfCollection(){
+        return studyGroupCollection.getFirst().toString();
+    }
 
-
-
-
+    @Override
+    public String toString() {
+        if (studyGroupCollection.isEmpty()){
+            return "Collection is empty(((";
+        }
+        StringBuilder info = new StringBuilder();
+        for (StudyGroup studyGroup: studyGroupCollection){
+            info.append(studyGroup.toString());
+            if (studyGroup!=studyGroupCollection.getLast()){
+                info.append("\n\n");
+            }
+        }
+        return info.toString();
+    }
 
 
     //запихнуть в метод??????

@@ -2,8 +2,7 @@ package org.example;
 
 import org.example.IO.ConsoleManager;
 import org.example.IO.ScannerManager;
-import org.example.commands.AddCommand;
-import org.example.commands.InfoCommand;
+import org.example.commands.*;
 import org.example.description_for_collection.StudyGroup;
 
 import java.io.IOException;
@@ -16,7 +15,9 @@ public class Main {
 //        System.out.println(config);
 //        FileManager fileManager= new FileManager("/test.yml");
 //        fileManager.loadFromFile(fileManager.getFileName());
+
         CollectionManager myCollection = new CollectionManager();
+
         CommandManager commandManager=new CommandManager();
         ScannerManager scannerManager = new ScannerManager(new Scanner(System.in));
         ConsoleManager consoleManager = new ConsoleManager(commandManager,scannerManager);
@@ -26,14 +27,23 @@ public class Main {
         for (StudyGroup a: myCollection.getStudyGroupCollection()) {
             System.out.println(a.getCreationDate());
         }
-        myCollection.generateId();
-//
-        AddCommand add = new AddCommand(myCollection,scannerManager);
-        add.execute("ssss");
-        System.out.println(myCollection.getStudyGroupCollection().getLast());
 
-        InfoCommand info = new InfoCommand(myCollection);
-        info.execute("ddd");
+//
+//        AddCommand add = new AddCommand(myCollection,scannerManager);
+//        add.execute("ssss");
+//        System.out.println(myCollection.getStudyGroupCollection().getLast());
+////        myCollection.getIdSet();
+
+//        InfoCommand info = new InfoCommand(myCollection);
+//        info.execute("ddd");
+        ShowCommand showCommand = new ShowCommand(myCollection);
+        showCommand.execute("dddd");
+//        SaveCommand save = new SaveCommand(myCollection);
+//        save.execute("ddd");
+//        ClearCommand clearCommand=new ClearCommand(myCollection);
+//        clearCommand.execute("dddd");
+        HeadCommand head = new HeadCommand(myCollection);
+        head.execute("dddd");
 
 
 

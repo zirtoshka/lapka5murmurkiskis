@@ -101,8 +101,23 @@ public class StudyGroup {
         return studentsCount;
     }
 
+//    @Override
+//    public String toString() {
+//        return getId()+"\n"+getName()+"\n"+getCoordinates()+"\n"+getCreationDate()+"\n"+getStudentsCount()+"\n"+getShouldBeExpelled()+"\n"+getAverageMark()+"\n"+semesterEnum+"\n"+getGroupAdmin();
+//    }
+
     @Override
     public String toString() {
-        return getId()+"\n"+getName()+"\n"+getCoordinates()+"\n"+getCreationDate()+"\n"+getStudentsCount()+"\n"+getShouldBeExpelled()+"\n"+getAverageMark()+"\n"+semesterEnum+"\n"+getGroupAdmin();
+        return "StudyGroup{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", coordinates=" + coordinates +
+                ", creationDate=" + creationDate +
+                ", studentsCount=" + studentsCount +
+                ", shouldBeExpelled=" + shouldBeExpelled +
+                ", averageMark=" + averageMark +
+                ", semesterEnum=" + semesterEnum +
+                ", groupAdmin=" + groupAdmin +
+                '}';
     }
 }

@@ -1,5 +1,6 @@
 package org.example.commands;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public abstract class Command {
@@ -11,7 +12,7 @@ public abstract class Command {
         this.discription=discription;
     }
 
-    public abstract boolean execute(String arg);
+    public abstract boolean execute(String arg) throws IOException;
 
 
     public String getName(){
