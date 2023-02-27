@@ -17,7 +17,7 @@ public class WriteYAMLParses {
         //тырпы
 //        String path  = System.getenv("PWD")+"/pukpuk.yml";
         String path =  "/Users/zirtoshka/IdeaProjects/lapka5murmurkiskis/test.yml";
-        System.out.println(path);
+//        System.out.println(path);
         File file = new File(path);
 
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());

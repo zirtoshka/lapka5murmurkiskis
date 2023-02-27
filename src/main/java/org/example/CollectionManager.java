@@ -74,6 +74,18 @@ public class CollectionManager {
     public String headOfCollection(){
         return studyGroupCollection.getFirst().toString();
     }
+    public StudyGroup getById(Integer id){
+        for (StudyGroup studyGroup: studyGroupCollection){
+            if (studyGroup.getId().equals(id)){
+                return studyGroup;
+            }
+        }
+        return null;
+    }
+    public void removeFromCollection(StudyGroup studyGroup){
+//        idSet.remove(studyGroup.getId());
+        studyGroupCollection.remove(studyGroup);
+    }
 
     @Override
     public String toString() {

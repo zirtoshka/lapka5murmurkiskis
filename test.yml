@@ -45,3 +45,26 @@
     eyeColor: "GREEN"
     hairColor: "RED"
     nationality: "NORTH_KOREA"
+- id: 3
+  name: "dsfdfsdfdf"
+  coordinates:
+    coordinatesX: 1.0
+    coordinatesY: 3.0
+  creationDate:
+  - 2023
+  - 2
+  - 20
+  - 20
+  - 25
+  - 38
+  - 736348000
+  studentsCount: 30
+  shouldBeExpelled: 1
+  averageMark: 5.0
+  semesterEnum: "FIRST"
+  groupAdmin:
+    name: "sos"
+    birthday: 1048204800000
+    eyeColor: "GREEN"
+    hairColor: "RED"
+    nationality: "NORTH_KOREA"

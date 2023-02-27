@@ -27,7 +27,7 @@ public class ReadYAMLParser {
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
         objectMapper.registerModule(new JavaTimeModule());
         ArrayDeque<StudyGroup> collectionFromFile = objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(ArrayDeque.class, StudyGroup.class));
-        System.out.println(collectionFromFile);
+//        System.out.println(collectionFromFile);
         return collectionFromFile;
 
 

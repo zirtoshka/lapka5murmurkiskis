@@ -1,6 +1,7 @@
 package org.example.description_for_collection;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class StudyGroup {
     private Integer id; //Поле не может быть null,
@@ -119,5 +120,18 @@ public class StudyGroup {
                 ", semesterEnum=" + semesterEnum +
                 ", groupAdmin=" + groupAdmin +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StudyGroup that = (StudyGroup) o;
+        return studentsCount == that.studentsCount && Double.compare(that.averageMark, averageMark) == 0 && id.equals(that.id) && name.equals(that.name) && coordinates.equals(that.coordinates) && creationDate.equals(that.creationDate) && shouldBeExpelled.equals(that.shouldBeExpelled) && semesterEnum == that.semesterEnum && groupAdmin.equals(that.groupAdmin);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, coordinates, creationDate, studentsCount, shouldBeExpelled, averageMark, semesterEnum, groupAdmin);
     }
 }

@@ -64,6 +64,7 @@ public class ScannerManager {
     }
 
     public int askStudentCount(){
+        int a=10;
         return 9;
     }
 
@@ -135,5 +136,15 @@ public class ScannerManager {
             break;
         }
         return country;
+    }
+    public boolean askQuestion(String question){
+        String finalQuestion = question+" (+/-):";
+        String answer;
+        while (true){
+            System.out.println(finalQuestion);
+            answer = scanner.nextLine().trim();
+            break;
+        }
+        return answer.equals("+");
     }
 }

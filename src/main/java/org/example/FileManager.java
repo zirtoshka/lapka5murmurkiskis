@@ -26,9 +26,9 @@ public class FileManager {
     public ArrayDeque<StudyGroup> loadFromFile() throws IOException {
         ReadYAMLParser yaml = new ReadYAMLParser();
         ArrayDeque<StudyGroup> studyGroupCollection = yaml.read(path);
-        for (StudyGroup a: studyGroupCollection){
-            System.out.println(a);
-        }
+//        for (StudyGroup a: studyGroupCollection){
+//            System.out.println(a);
+//        }
         return studyGroupCollection;
     }
     public void write(ArrayDeque<StudyGroup> studyGroupCollection) throws IOException{

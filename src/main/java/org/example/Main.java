@@ -23,10 +23,18 @@ public class Main {
         ConsoleManager consoleManager = new ConsoleManager(commandManager,scannerManager);
         myCollection.loadFromFile();
         myCollection.writeToFile();
+        System.out.println(myCollection);
 
+        StudyGroup rem = new StudyGroup();
         for (StudyGroup a: myCollection.getStudyGroupCollection()) {
-            System.out.println(a.getCreationDate());
+            if (a.getId()==2){
+                rem=a;
+            }
+//            System.out.println(a.getCreationDate());
         }
+        System.out.println("trying to remove");
+        myCollection.removeFromCollection(rem);
+        System.out.println(myCollection);
 
 //
 //        AddCommand add = new AddCommand(myCollection,scannerManager);
@@ -36,14 +44,14 @@ public class Main {
 
 //        InfoCommand info = new InfoCommand(myCollection);
 //        info.execute("ddd");
-        ShowCommand showCommand = new ShowCommand(myCollection);
-        showCommand.execute("dddd");
+//        ShowCommand showCommand = new ShowCommand(myCollection);
+//        showCommand.execute("dddd");
 //        SaveCommand save = new SaveCommand(myCollection);
 //        save.execute("ddd");
 //        ClearCommand clearCommand=new ClearCommand(myCollection);
 //        clearCommand.execute("dddd");
-        HeadCommand head = new HeadCommand(myCollection);
-        head.execute("dddd");
+//        HeadCommand head = new HeadCommand(myCollection);
+//        head.execute("dddd");
 
 
 
