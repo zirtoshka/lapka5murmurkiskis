@@ -29,8 +29,6 @@ public class Main {
         RemoveByIdCommand removeByIdCommand=new RemoveByIdCommand(myCollection);
         removeByIdCommand.execute("1");
         System.out.println(myCollection);
-
-
 //        StudyGroup rem = new StudyGroup();
 //        for (StudyGroup a: myCollection.getStudyGroupCollection()) {
 //            if (a.getId()==2){
