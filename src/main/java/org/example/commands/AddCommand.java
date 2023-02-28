@@ -4,8 +4,6 @@ import org.example.CollectionManager;
 import org.example.IO.ScannerManager;
 import org.example.description_for_collection.StudyGroup;
 
-import java.util.Scanner;
-
 public class AddCommand  extends Command{
     private final CollectionManager collectionManager;
     private final ScannerManager scannerManager;
@@ -26,7 +24,7 @@ public class AddCommand  extends Command{
                                 collectionManager.getLastInitTime().now(),
                                 scannerManager.askStudentCount(),
                                 scannerManager.askShouldBeExpelled(),
-                                scannerManager.askAvarageMark(),
+                                scannerManager.askAverageMark(),
                                 scannerManager.askSemesterEnum(),
                                 scannerManager.askPerson())
                 );

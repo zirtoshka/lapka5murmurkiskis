@@ -24,17 +24,21 @@ public class Main {
         myCollection.loadFromFile();
         myCollection.writeToFile();
         System.out.println(myCollection);
-
-        StudyGroup rem = new StudyGroup();
-        for (StudyGroup a: myCollection.getStudyGroupCollection()) {
-            if (a.getId()==2){
-                rem=a;
-            }
-//            System.out.println(a.getCreationDate());
-        }
-        System.out.println("trying to remove");
-        myCollection.removeFromCollection(rem);
+        UpdateByIdCommand updateByIdCommand = new UpdateByIdCommand(myCollection,scannerManager);
+        updateByIdCommand.execute("2");
         System.out.println(myCollection);
+
+
+//        StudyGroup rem = new StudyGroup();
+//        for (StudyGroup a: myCollection.getStudyGroupCollection()) {
+//            if (a.getId()==2){
+//                rem=a;
+//            }
+////            System.out.println(a.getCreationDate());
+//        }
+//        System.out.println("trying to remove");
+//        myCollection.removeFromCollection(rem);
+//        System.out.println(myCollection);
 
 //
 //        AddCommand add = new AddCommand(myCollection,scannerManager);

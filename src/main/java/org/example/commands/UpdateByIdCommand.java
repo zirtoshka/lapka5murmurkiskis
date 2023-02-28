@@ -1,7 +1,6 @@
 package org.example.commands;
 
 import org.example.CollectionManager;
-import org.example.CommandManager;
 import org.example.IO.ConsoleManager;
 import org.example.IO.ScannerManager;
 import org.example.description_for_collection.Coordinates;
@@ -12,7 +11,6 @@ import org.example.description_for_collection.StudyGroup;
 import java.time.LocalDateTime;
 
 public class UpdateByIdCommand extends Command {
-    //ffff
     private final CollectionManager collectionManager;
     private final ScannerManager scannerManager;
 
@@ -50,7 +48,7 @@ public class UpdateByIdCommand extends Command {
             shouldBeExpelled = scannerManager.askShouldBeExpelled();
         }
         if (scannerManager.askQuestion("Change study group average mark?")) {
-            averageMark = scannerManager.askAvarageMark();
+            averageMark = scannerManager.askAverageMark();
         }
         if (scannerManager.askQuestion("Change study group semester?")) {
             semesterEnum = scannerManager.askSemesterEnum();

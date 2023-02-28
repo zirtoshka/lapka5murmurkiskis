@@ -64,19 +64,54 @@ public class ScannerManager {
     }
 
     public int askStudentCount(){
-        int a=10;
-        return 9;
+        String strCount;
+        int count;
+        while (true){
+            //exceptions
+            System.out.println("Enter the number of students in a group:");
+            strCount = scanner.nextLine().trim();
+            count = (int) Integer.parseInt(strCount);
+            break;
+        }
+        return count;
     }
 
     public Integer askShouldBeExpelled(){
-        return 3;
+        String strCountExpelled;
+        int countExpelled;
+        while (true){
+            //exceptions
+            System.out.println("Enter the number of students to be expelled:");
+            strCountExpelled = scanner.nextLine().trim();
+            countExpelled = Integer.parseInt(strCountExpelled);
+            break;
+        }
+        return countExpelled;
     }
 
-    public double askAvarageMark(){
-        return 5;
+    public double askAverageMark(){
+        String strMark;
+        double countMarkd;
+        while (true){
+            //exceptions
+            System.out.println("Enter average mark:");
+            strMark = scanner.nextLine().trim();
+            countMarkd=(double) Double.parseDouble(strMark);
+            break;
+        }
+        return countMarkd;
     }
     public Semester askSemesterEnum(){
-        return Semester.FIFTH;
+        String strSemester;
+        Semester semester;
+        while (true){
+            System.out.println("Semester list - "+ColorHair.getList());
+            System.out.println("Enter your semester:");
+            strSemester=scanner.nextLine().trim();
+            semester=Semester.valueOf(strSemester.toUpperCase());
+            break;
+        }
+        return semester;
     }
 
     public Person askPerson(){
