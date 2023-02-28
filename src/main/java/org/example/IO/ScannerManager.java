@@ -105,7 +105,7 @@ public class ScannerManager {
         String strSemester;
         Semester semester;
         while (true){
-            System.out.println("Semester list - "+ColorHair.getList());
+            System.out.println("Semester list - "+Semester.getList());
             System.out.println("Enter your semester:");
             strSemester=scanner.nextLine().trim();
             semester=Semester.valueOf(strSemester.toUpperCase());

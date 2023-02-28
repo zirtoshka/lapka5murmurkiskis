@@ -10,24 +10,19 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-//        YamlReader reader = new YamlReader();
-//        Map<String, Object> config = reader.read("/Users/zirtoshka/прога/vehvehveh.yml");
-//        System.out.println(config);
-//        FileManager fileManager= new FileManager("/test.yml");
-//        fileManager.loadFromFile(fileManager.getFileName());
-
-        CollectionManager myCollection = new CollectionManager();
-
+        Scanner userScanner=new Scanner(System.in);
+        ScannerManager scannerManager = new ScannerManager(userScanner);
+        FileManager fileManager=new FileManager(new Scanner(System.in).nextLine());
+//        FileManager fileManager = new FileManager(args[0]);
+        CollectionManager myCollection = new CollectionManager(fileManager);
         CommandManager commandManager=new CommandManager();
-        ScannerManager scannerManager = new ScannerManager(new Scanner(System.in));
         ConsoleManager consoleManager = new ConsoleManager(commandManager,scannerManager);
         myCollection.loadFromFile();
         myCollection.writeToFile();
         System.out.println(myCollection);
-//        UpdateByIdCommand updateByIdCommand = new UpdateByIdCommand(myCollection,scannerManager);
-//        updateByIdCommand.execute("2");
-        RemoveByIdCommand removeByIdCommand=new RemoveByIdCommand(myCollection);
-        removeByIdCommand.execute("1");
+
+        AddIfMaxCommand add = new AddIfMaxCommand(myCollection,scannerManager);
+        add.execute("sddd");
         System.out.println(myCollection);
 //        StudyGroup rem = new StudyGroup();
 //        for (StudyGroup a: myCollection.getStudyGroupCollection()) {

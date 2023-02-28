@@ -20,15 +20,17 @@ public class CollectionManager {
 //        }
 //    }
     private Integer newId = 1;
-    FileManager fileManager = new FileManager(new Scanner(System.in).nextLine());
+    private FileManager fileManager;
+//    FileManager fileManager = new FileManager(new Scanner(System.in).nextLine());
     private java.time.LocalDateTime lastInitTime;
     private LocalDateTime lastSaveTime;
 
 
 
-    public CollectionManager() {
+    public CollectionManager(FileManager fileManager) {
         this.lastInitTime=null;
         this.lastSaveTime=null;
+        this.fileManager=fileManager;
     }
 
     public void loadFromFile() throws IOException {
@@ -89,6 +91,12 @@ public class CollectionManager {
         idSet.remove(studyGroup.getId());
         studyGroupCollection.remove(studyGroup);
     }
+    public int getMaxNumberInGroup(){
+        int res =-1;
+        for(StudyGroup group: studyGroupCollection){
+            if (group.getStudentsCount()>res){
+                res=group.getStudentsCount();}}
+        return res;}
 
     @Override
     public String toString() {

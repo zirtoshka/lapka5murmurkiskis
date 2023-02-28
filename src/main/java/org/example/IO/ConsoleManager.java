@@ -18,6 +18,10 @@ public class ConsoleManager {
     public static void printInfo1(Object message) {
         System.out.println("\u001B[45m" + message + "\u001B[0m");
     }
+
+    public static void printForNothing(Object message){
+        System.out.println("\u001B[36m" + message + "\u001B[0m");
+    }
     public static void printSuccess(Object message){
         System.out.println("\u001B[42m" + message + "\u001B[0m");
     }
