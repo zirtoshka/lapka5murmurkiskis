@@ -24,8 +24,10 @@ public class Main {
         myCollection.loadFromFile();
         myCollection.writeToFile();
         System.out.println(myCollection);
-        UpdateByIdCommand updateByIdCommand = new UpdateByIdCommand(myCollection,scannerManager);
-        updateByIdCommand.execute("2");
+//        UpdateByIdCommand updateByIdCommand = new UpdateByIdCommand(myCollection,scannerManager);
+//        updateByIdCommand.execute("2");
+        RemoveByIdCommand removeByIdCommand=new RemoveByIdCommand(myCollection);
+        removeByIdCommand.execute("1");
         System.out.println(myCollection);
 
 

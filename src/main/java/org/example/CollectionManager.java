@@ -83,7 +83,10 @@ public class CollectionManager {
         return null;
     }
     public void removeFromCollection(StudyGroup studyGroup){
-//        idSet.remove(studyGroup.getId());
+        studyGroupCollection.remove(studyGroup);
+    }
+    public void removeById(StudyGroup studyGroup){
+        idSet.remove(studyGroup.getId());
         studyGroupCollection.remove(studyGroup);
     }
 
