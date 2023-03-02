@@ -63,5 +63,8 @@ public class CommandManager {
         commands.add(printFieldDescendingSemesterCmd);
         commands.add(printUniqueAdminCmd);
     }
+    public List<Command> getCmd(){
+        return commands;
+    }
 
 }
