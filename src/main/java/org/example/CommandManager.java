@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.IO.ConsoleManager;
 import org.example.commands.Command;
 
 import java.util.LinkedList;
@@ -15,7 +16,7 @@ public class CommandManager {
     private final Command removeByIdCmd;
     private final Command clearCmd;
     private final Command saveCmd;
-    private final Command executeFileCmd;
+    private final Command executeScriptCmd;
     private final Command exitCmd;
     private final Command headCmd;
     private final Command addIfMaxCmd;
@@ -27,7 +28,7 @@ public class CommandManager {
 
     public CommandManager(Command helpCmd, Command infoCmd, Command showCmd,
                           Command addCmd, Command updateByIdCmd, Command removeByIdCmd,
-                          Command clearCmd, Command saveCmd, Command executeFileCmd, Command exitCmd, Command headCmd,
+                          Command clearCmd, Command saveCmd, Command executeScriptCmd, Command exitCmd, Command headCmd,
                           Command addIfMaxCmd, Command historyCmd, Command filterContainsNameCmd, Command printUniqueAdminCmd,
                           Command printFieldDescendingSemesterCmd) {
         this.helpCmd=helpCmd;
@@ -38,7 +39,7 @@ public class CommandManager {
         this.removeByIdCmd=removeByIdCmd;
         this.clearCmd=clearCmd;
         this.saveCmd=saveCmd;
-        this.executeFileCmd=executeFileCmd;
+        this.executeScriptCmd = executeScriptCmd;
         this.exitCmd=exitCmd;
         this.addIfMaxCmd=addIfMaxCmd;
         this.historyCmd=historyCmd;
@@ -55,7 +56,7 @@ public class CommandManager {
         commands.add(removeByIdCmd);
         commands.add(clearCmd);
         commands.add(saveCmd);
-        commands.add(executeFileCmd);
+        commands.add(executeScriptCmd);
         commands.add(exitCmd);
         commands.add(addIfMaxCmd);
         commands.add(historyCmd);
@@ -65,6 +66,63 @@ public class CommandManager {
     }
     public List<Command> getCmd(){
         return commands;
+    }
+    public boolean noSuchCommand(String arg){
+        ConsoleManager.printError("I don't know this command:( You can enter 'help' for help");
+        return false;
+    }
+    public boolean info(String arg){
+        return infoCmd.execute(arg);
+    }
+    public boolean show(String arg){
+        return showCmd.execute(arg);
+    }
+    public boolean help(String arg){
+        if (headCmd.execute(arg)){
+            for (Command cmd: commands){
+                System.out.println("Command name - "+cmd.getName()+". Command's description: "+cmd.getDiscription());
+            }
+            return true;
+        } else {return false;}
+    }
+    public boolean add(String arg){
+        return addCmd.execute(arg);
+    }
+    public boolean updateById(String arg){
+        return updateByIdCmd.execute(arg);
+    }
+    public boolean removeById(String arg){
+        return removeByIdCmd.execute(arg);
+    }
+    public boolean clear(String arg){
+        return clearCmd.execute(arg);
+    }
+    public boolean save(String arg){
+        return saveCmd.execute(arg);
+    }
+    public boolean executeScript(String arg){
+        return executeScriptCmd.execute(arg);
+    }
+    public boolean exit(String arg){
+        return exitCmd.execute(arg);
+    }
+    public boolean head(String arg){
+        return headCmd.execute(arg);
+    }
+    public boolean addIfMax(String arg){
+        return addIfMaxCmd.execute(arg);
+    }
+    public boolean history(String arg){
+        return historyCmd.execute(arg);
+    }
+    public boolean filterContainsName(String arg){
+        return filterContainsNameCmd.execute(arg);
+    }
+    public boolean printUniqueAdmin(String arg){
+        return printUniqueAdminCmd.execute(arg);
+    }
+    public boolean printFieldDescendingSemester(String arg){
+        return printFieldDescendingSemesterCmd.execute(arg);
     }
 
 }

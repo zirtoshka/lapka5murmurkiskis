@@ -25,6 +25,9 @@ public class ConsoleManager {
     public static void printSuccess(Object message){
         System.out.println("\u001B[42m" + message + "\u001B[0m");
     }
+    public static void printError(Object message){
+        System.out.println("\u001B[33m" + message + "\u001B[0m");
+    }
 
     public int launchCommand(String[] userCommand){
 //        switch ()
