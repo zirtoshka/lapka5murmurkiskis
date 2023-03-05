@@ -11,45 +11,52 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
         Scanner userScanner=new Scanner(System.in);
+        HistoryWriter historyWriter=new HistoryWriter();
         ScannerManager scannerManager = new ScannerManager(userScanner);
         FileManager fileManager=new FileManager(new Scanner(System.in).nextLine());
 //        FileManager fileManager = new FileManager(args[0]);
-        CollectionManager myCollection = new CollectionManager(fileManager);
-        CommandManager commandManager=new CommandManager();
+        CollectionManager collectionManager = new CollectionManager(fileManager);
+        CommandManager commandManager=new CommandManager(
+                new HelpCommand(), new InfoCommand(collectionManager), new ShowCommand(collectionManager),
+                new AddCommand(collectionManager,scannerManager), new UpdateByIdCommand(collectionManager,scannerManager),
+                new RemoveByIdCommand(collectionManager), new ClearCommand(collectionManager), new SaveCommand(collectionManager),
+                new ExecuteScriptCommand(), new ExitCommand(), new HeadCommand(collectionManager), new AddIfMaxCommand(collectionManager,scannerManager),
+                new HistoryCommand(historyWriter), new FilterContainsNameCommand(), new PrintUniqueGroupAdminCommand(),
+                new PrintFieldDescendingSemesterCommand());
         ConsoleManager consoleManager = new ConsoleManager(commandManager,scannerManager);
-        myCollection.loadFromFile();
-        myCollection.writeToFile();
-        System.out.println(myCollection);
+        collectionManager.loadFromFile();
+        collectionManager.writeToFile();
+        System.out.println(collectionManager);
 
-        AddIfMaxCommand add = new AddIfMaxCommand(myCollection,scannerManager);
+        AddIfMaxCommand add = new AddIfMaxCommand(collectionManager,scannerManager);
         add.execute("sddd");
-        System.out.println(myCollection);
+        System.out.println(collectionManager);
 //        StudyGroup rem = new StudyGroup();
-//        for (StudyGroup a: myCollection.getStudyGroupCollection()) {
+//        for (StudyGroup a: collectionManager.getStudyGroupCollection()) {
 //            if (a.getId()==2){
 //                rem=a;
 //            }
 ////            System.out.println(a.getCreationDate());
 //        }
 //        System.out.println("trying to remove");
-//        myCollection.removeFromCollection(rem);
-//        System.out.println(myCollection);
+//        collectionManager.removeFromCollection(rem);
+//        System.out.println(collectionManager);
 
 //
-//        AddCommand add = new AddCommand(myCollection,scannerManager);
+//        AddCommand add = new AddCommand(collectionManager,scannerManager);
 //        add.execute("ssss");
-//        System.out.println(myCollection.getStudyGroupCollection().getLast());
-////        myCollection.getIdSet();
+//        System.out.println(collectionManager.getStudyGroupCollection().getLast());
+////        collectionManager.getIdSet();
 
-//        InfoCommand info = new InfoCommand(myCollection);
+//        InfoCommand info = new InfoCommand(collectionManager);
 //        info.execute("ddd");
-//        ShowCommand showCommand = new ShowCommand(myCollection);
+//        ShowCommand showCommand = new ShowCommand(collectionManager);
 //        showCommand.execute("dddd");
-//        SaveCommand save = new SaveCommand(myCollection);
+//        SaveCommand save = new SaveCommand(collectionManager);
 //        save.execute("ddd");
-//        ClearCommand clearCommand=new ClearCommand(myCollection);
+//        ClearCommand clearCommand=new ClearCommand(collectionManager);
 //        clearCommand.execute("dddd");
-//        HeadCommand head = new HeadCommand(myCollection);
+//        HeadCommand head = new HeadCommand(collectionManager);
 //        head.execute("dddd");
 
 

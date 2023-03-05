@@ -7,7 +7,8 @@ import java.util.Scanner;
 public class ConsoleManager {
     private CommandManager commandManager;
     private ScannerManager scannerManager;
-
+    private final Scanner scanner;
+  
     public ConsoleManager(CommandManager commandManager, ScannerManager scannerManager){
         this.commandManager=commandManager;
         this.scannerManager=scannerManager;
