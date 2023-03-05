@@ -31,7 +31,7 @@ public class AddIfMaxCommand extends Command{
             collectionManager.addToCollection(studyGroup);
             ConsoleManager.printSuccess("Wow< we have got a new BIG group");
         }else { ConsoleManager.printForNothing("oh, Nothing happened");}
-        return true;
+        return false;
     }
     }
 

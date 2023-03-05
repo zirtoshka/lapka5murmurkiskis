@@ -7,7 +7,7 @@ import org.example.description_for_collection.StudyGroup;
 public class RemoveByIdCommand extends Command{
     private final CollectionManager collectionManager;
     public RemoveByIdCommand(CollectionManager collectionManager){
-        super("remove by id", "remove element by id");
+        super("remove_by_id", "remove element by id");
         this.collectionManager=collectionManager;
     }
 

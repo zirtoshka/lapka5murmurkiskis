@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
+    public static final String INPUT_COMMAND = "$ ";
+    public static final String INPUT_INFO = "> ";
     public static void main(String[] args) throws IOException {
         Scanner userScanner=new Scanner(System.in);
         HistoryWriter historyWriter=new HistoryWriter();
@@ -23,14 +25,13 @@ public class Main {
                 new ExecuteScriptCommand(), new ExitCommand(), new HeadCommand(collectionManager), new AddIfMaxCommand(collectionManager,scannerManager),
                 new HistoryCommand(historyWriter), new FilterContainsNameCommand(), new PrintUniqueGroupAdminCommand(),
                 new PrintFieldDescendingSemesterCommand());
-        ConsoleManager consoleManager = new ConsoleManager(commandManager,scannerManager);
-        collectionManager.loadFromFile();
-        collectionManager.writeToFile();
-        System.out.println(collectionManager);
+        ConsoleManager consoleManager = new ConsoleManager(commandManager,scannerManager,userScanner, historyWriter);
+        consoleManager.toStartMode();
+//        collectionManager.loadFromFile();
+//        collectionManager.writeToFile();
+//        System.out.println(collectionManager);
 
-        AddIfMaxCommand add = new AddIfMaxCommand(collectionManager,scannerManager);
-        add.execute("sddd");
-        System.out.println(collectionManager);
+
 //        StudyGroup rem = new StudyGroup();
 //        for (StudyGroup a: collectionManager.getStudyGroupCollection()) {
 //            if (a.getId()==2){

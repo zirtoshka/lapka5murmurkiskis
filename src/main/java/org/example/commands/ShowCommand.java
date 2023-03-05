@@ -12,7 +12,7 @@ public class ShowCommand extends Command{
     @Override
     public boolean execute(String arg){
         System.out.println(collectionManager);
-        return true;
+        return false;
     }
 
 }

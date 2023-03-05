@@ -3,6 +3,7 @@ package org.example;
 import org.example.IO.ConsoleManager;
 import org.example.commands.Command;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -71,13 +72,14 @@ public class CommandManager {
         ConsoleManager.printError("I don't know this command:( You can enter 'help' for help");
         return false;
     }
-    public boolean info(String arg){
+    //DELETE IOEXCEPTIONS!!!!!!!???????/
+    public boolean info(String arg) throws IOException {
         return infoCmd.execute(arg);
     }
-    public boolean show(String arg){
+    public boolean show(String arg) throws IOException {
         return showCmd.execute(arg);
     }
-    public boolean help(String arg){
+    public boolean help(String arg) throws IOException {
         if (headCmd.execute(arg)){
             for (Command cmd: commands){
                 System.out.println("Command name - "+cmd.getName()+". Command's description: "+cmd.getDiscription());
@@ -85,43 +87,43 @@ public class CommandManager {
             return true;
         } else {return false;}
     }
-    public boolean add(String arg){
+    public boolean add(String arg) throws IOException {
         return addCmd.execute(arg);
     }
-    public boolean updateById(String arg){
+    public boolean updateById(String arg) throws IOException {
         return updateByIdCmd.execute(arg);
     }
-    public boolean removeById(String arg){
+    public boolean removeById(String arg) throws IOException {
         return removeByIdCmd.execute(arg);
     }
-    public boolean clear(String arg){
+    public boolean clear(String arg) throws IOException {
         return clearCmd.execute(arg);
     }
-    public boolean save(String arg){
+    public boolean save(String arg) throws IOException {
         return saveCmd.execute(arg);
     }
-    public boolean executeScript(String arg){
+    public boolean executeScript(String arg) throws IOException {
         return executeScriptCmd.execute(arg);
     }
-    public boolean exit(String arg){
+    public boolean exit(String arg) throws IOException {
         return exitCmd.execute(arg);
     }
-    public boolean head(String arg){
+    public boolean head(String arg) throws IOException {
         return headCmd.execute(arg);
     }
-    public boolean addIfMax(String arg){
+    public boolean addIfMax(String arg) throws IOException {
         return addIfMaxCmd.execute(arg);
     }
-    public boolean history(String arg){
+    public boolean history(String arg) throws IOException {
         return historyCmd.execute(arg);
     }
-    public boolean filterContainsName(String arg){
+    public boolean filterContainsName(String arg) throws IOException {
         return filterContainsNameCmd.execute(arg);
     }
-    public boolean printUniqueAdmin(String arg){
+    public boolean printUniqueAdmin(String arg) throws IOException {
         return printUniqueAdminCmd.execute(arg);
     }
-    public boolean printFieldDescendingSemester(String arg){
+    public boolean printFieldDescendingSemester(String arg) throws IOException {
         return printFieldDescendingSemesterCmd.execute(arg);
     }
 

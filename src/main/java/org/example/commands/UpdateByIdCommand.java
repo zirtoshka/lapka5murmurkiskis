@@ -15,7 +15,7 @@ public class UpdateByIdCommand extends Command {
     private final ScannerManager scannerManager;
 
     public UpdateByIdCommand(CollectionManager collectionManager, ScannerManager scannerManager) {
-        super("update id {element}", "update element by id");
+        super("update_by_id", "update element by id");
         this.collectionManager = collectionManager;
         this.scannerManager = scannerManager;
     }
