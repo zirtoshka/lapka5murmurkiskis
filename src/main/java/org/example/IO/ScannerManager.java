@@ -2,13 +2,20 @@ package org.example.IO;
 
 import org.example.Main;
 import org.example.description_for_collection.*;
+import org.example.exceptions.NotNullException;
+import org.example.exceptions.WrongNameException;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class ScannerManager {
     private final double MAX_X=576;
     private final float MIN_Y=-596;
+    private Pattern patternSymbols = Pattern.compile("\\w*");
+    private Pattern patternNumber = Pattern.compile("(-?)\\d+");
+
     private Scanner scanner;
 
     public ScannerManager(Scanner scanner){
@@ -16,13 +23,22 @@ public class ScannerManager {
     }
 
     public String askName(String inputTitle, int minLength, String typeOfName){
-        String name;
+        String name="d";//ошибка иначе требует иницилизации
         while (true){
-            System.out.println(inputTitle);
-            System.out.print(Main.INPUT_INFO);
-            name = scanner.nextLine().trim();
+            try {
+                System.out.println(inputTitle);
+                System.out.print(Main.INPUT_INFO);
+                name = scanner.nextLine().trim();
+                if (name.equals("")) throw new NotNullException();
+                if (!patternSymbols.matcher(name).matches()) throw new WrongNameException();
+                break;
+            } catch (NotNullException e){
+                ConsoleManager.printError(String.format("%s can't be empty!!!", typeOfName));
+            } catch (WrongNameException e){
+                ConsoleManager.printError("I can parse only char symbol! (letters, numbers and '_')");
+            }
             //exceptions
-            break;
+
         }
         return name;
     }
@@ -75,7 +91,7 @@ public class ScannerManager {
             System.out.println("Enter the number of students in a group:");
             System.out.print(Main.INPUT_INFO);
             strCount = scanner.nextLine().trim();
-            count = (int) Integer.parseInt(strCount);
+            count =  Integer.parseInt(strCount);
             break;
         }
         return count;
