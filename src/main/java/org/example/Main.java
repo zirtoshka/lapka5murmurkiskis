@@ -16,8 +16,10 @@ public class Main {
         HistoryWriter historyWriter=new HistoryWriter();
         ScannerManager scannerManager = new ScannerManager(userScanner);
         FileManager fileManager=new FileManager(new Scanner(System.in).nextLine());
+
 //        FileManager fileManager = new FileManager(args[0]);
         CollectionManager collectionManager = new CollectionManager(fileManager);
+        collectionManager.loadFromFile();
         CommandManager commandManager=new CommandManager(
                 new HelpCommand(), new InfoCommand(collectionManager), new ShowCommand(collectionManager),
                 new AddCommand(collectionManager,scannerManager), new UpdateByIdCommand(collectionManager,scannerManager),

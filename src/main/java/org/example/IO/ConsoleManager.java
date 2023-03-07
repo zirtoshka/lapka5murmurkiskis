@@ -1,6 +1,5 @@
 package org.example.IO;
 
-import org.example.CollectionManager;
 import org.example.CommandManager;
 import org.example.HistoryWriter;
 import org.example.Main;
@@ -9,7 +8,6 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.SortedMap;
 
 public class ConsoleManager {
     private CommandManager commandManager;
@@ -45,13 +43,13 @@ public class ConsoleManager {
         System.out.println("\u001B[33m" + message + "\u001B[0m");
     }
 
-    public int launchCommand(String[] userCommand) {
+    public int scriptMode(String[] userCommand) {
 //        switch ()
         return 0;
     }
 
     //DELETE IOEXCEPTION!!!!!!!!????????/
-    public int scriptMode(String[] userCmd) throws IOException {
+    public int launchCmd(String[] userCmd) throws IOException {
         String cmd=userCmd[0];
         String arg = userCmd[1];
         switch (cmd){
@@ -147,17 +145,17 @@ public class ConsoleManager {
         }
         return 0;
     }
-
-    public void toStartMode() {
+    //DELETE IOEXCEPTION!!!!!!!!????????/
+    public void toStartMode() throws IOException{
         String[] userCmd = {"", ""};
         int cmdStatus;
 
         do {
-            System.out.println(Main.INPUT_COMMAND);
+            System.out.print(Main.INPUT_COMMAND);
             userCmd = (scanner.nextLine().trim() + " ").split(" ", 2);
             userCmd[1] = userCmd[1].trim();
-            cmdStatus = launchCommand(userCmd);
-        } while (cmdStatus != 1);
+            cmdStatus = launchCmd(userCmd);
+        } while (cmdStatus != 2);
 
 
     }

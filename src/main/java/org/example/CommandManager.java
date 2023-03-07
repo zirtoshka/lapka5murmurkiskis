@@ -80,7 +80,7 @@ public class CommandManager {
         return showCmd.execute(arg);
     }
     public boolean help(String arg) throws IOException {
-        if (headCmd.execute(arg)){
+        if (helpCmd.execute(arg)){
             for (Command cmd: commands){
                 System.out.println("Command name - "+cmd.getName()+". Command's description: "+cmd.getDiscription());
             }

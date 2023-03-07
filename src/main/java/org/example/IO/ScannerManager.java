@@ -1,5 +1,6 @@
 package org.example.IO;
 
+import org.example.Main;
 import org.example.description_for_collection.*;
 
 import java.util.Date;
@@ -18,6 +19,7 @@ public class ScannerManager {
         String name;
         while (true){
             System.out.println(inputTitle);
+            System.out.print(Main.INPUT_INFO);
             name = scanner.nextLine().trim();
             //exceptions
             break;
@@ -37,6 +39,7 @@ public class ScannerManager {
         while (true){
             //exceptions
             System.out.println("Enter X coord: ");
+            System.out.print(Main.INPUT_INFO);
             strX = scanner.nextLine().trim();
             x=Double.parseDouble(strX);
             break;
@@ -50,6 +53,7 @@ public class ScannerManager {
         while (true){
             //exceptions
             System.out.println("Enter Y coord:");
+            System.out.print(Main.INPUT_INFO);
             strY = scanner.nextLine().trim();
             y = Float.parseFloat(strY);
             break;
@@ -69,6 +73,7 @@ public class ScannerManager {
         while (true){
             //exceptions
             System.out.println("Enter the number of students in a group:");
+            System.out.print(Main.INPUT_INFO);
             strCount = scanner.nextLine().trim();
             count = (int) Integer.parseInt(strCount);
             break;
@@ -82,6 +87,7 @@ public class ScannerManager {
         while (true){
             //exceptions
             System.out.println("Enter the number of students to be expelled:");
+            System.out.print(Main.INPUT_INFO);
             strCountExpelled = scanner.nextLine().trim();
             countExpelled = Integer.parseInt(strCountExpelled);
             break;
@@ -95,6 +101,7 @@ public class ScannerManager {
         while (true){
             //exceptions
             System.out.println("Enter average mark:");
+            System.out.print(Main.INPUT_INFO);
             strMark = scanner.nextLine().trim();
             countMarkd=(double) Double.parseDouble(strMark);
             break;
@@ -107,6 +114,7 @@ public class ScannerManager {
         while (true){
             System.out.println("Semester list - "+Semester.getList());
             System.out.println("Enter your semester:");
+            System.out.print(Main.INPUT_INFO);
             strSemester=scanner.nextLine().trim();
             semester=Semester.valueOf(strSemester.toUpperCase());
             break;
@@ -116,11 +124,6 @@ public class ScannerManager {
 
     public Person askPerson(){
         return new Person(askPersonName(),askBirthday(),askEyeColor(),askHairColor(),askNationality());
-
-        //askBirthday
-        //askEyeColor
-        //askHairColor
-        //askNationakity
     }
     public java.util.Date askBirthday(){
         //xp[ how wtf
@@ -129,6 +132,7 @@ public class ScannerManager {
         while (true){
             System.out.println("You can use format - 'January 19, 1970'");
             System.out.println("Enter your birthday for admin: ");
+            System.out.print(Main.INPUT_INFO);
             strDate = scanner.nextLine().trim();
             date = new Date(strDate);
             break;
@@ -141,6 +145,7 @@ public class ScannerManager {
         while (true){
             System.out.println("Color eye list - "+ColorEye.getList());
             System.out.println("Enter your color eye:");
+            System.out.print(Main.INPUT_INFO);
             strEyeColor=scanner.nextLine().trim();
             colorEye=ColorEye.valueOf(strEyeColor.toUpperCase());
             break;
@@ -153,6 +158,7 @@ public class ScannerManager {
         while (true){
             System.out.println("Color hair list - "+ColorHair.getList());
             System.out.println("Enter your color hair:");
+            System.out.print(Main.INPUT_INFO);
             strHairColor=scanner.nextLine().trim();
             colorHair=ColorHair.valueOf(strHairColor.toUpperCase());
             break;
@@ -166,6 +172,7 @@ public class ScannerManager {
         while (true){
             System.out.println("Country list - "+Country.getList());
             System.out.println("Enter your county:");
+            System.out.print(Main.INPUT_INFO);
             strCountry=scanner.nextLine().trim();
             country=Country.valueOf(strCountry.toUpperCase());
             break;
@@ -177,6 +184,7 @@ public class ScannerManager {
         String answer;
         while (true){
             System.out.println(finalQuestion);
+            System.out.print(Main.INPUT_INFO);
             answer = scanner.nextLine().trim();
             break;
         }

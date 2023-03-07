@@ -68,3 +68,26 @@
     eyeColor: "GREEN"
     hairColor: "RED"
     nationality: "NORTH_KOREA"
+- id: 4
+  name: "gugi"
+  coordinates:
+    coordinatesX: 3.0
+    coordinatesY: 4.0
+  creationDate:
+  - 2023
+  - 3
+  - 7
+  - 12
+  - 50
+  - 29
+  - 246663000
+  studentsCount: 4
+  shouldBeExpelled: 3
+  averageMark: 45.0
+  semesterEnum: "FIRST"
+  groupAdmin:
+    name: "didus"
+    birthday: 1081454400000
+    eyeColor: "GREEN"
+    hairColor: "RED"
+    nationality: "VATICAN"
