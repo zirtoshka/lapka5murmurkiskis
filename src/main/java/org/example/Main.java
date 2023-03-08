@@ -26,7 +26,7 @@ public class Main {
                 new RemoveByIdCommand(collectionManager), new ClearCommand(collectionManager), new SaveCommand(collectionManager),
                 new ExecuteScriptCommand(), new ExitCommand(), new HeadCommand(collectionManager), new AddIfMaxCommand(collectionManager,scannerManager),
                 new HistoryCommand(historyWriter), new FilterContainsNameCommand(collectionManager), new PrintUniqueGroupAdminCommand(collectionManager),
-                new PrintFieldDescendingSemesterCommand());
+                new PrintFieldDescendingSemesterCommand(collectionManager));
         ConsoleManager consoleManager = new ConsoleManager(commandManager,scannerManager,userScanner, historyWriter);
         consoleManager.toStartMode();
 //        collectionManager.loadFromFile();

@@ -82,7 +82,7 @@ public class CommandManager {
     public boolean help(String arg) throws IOException {
         if (helpCmd.execute(arg)){
             for (Command cmd: commands){
-                System.out.println("Command name - "+cmd.getName()+". Command's description: "+cmd.getDiscription());
+                ConsoleManager.printInfo1("Command name - "+cmd.getName()+". Command's description: "+cmd.getDiscription());
             }
             return true;
         } else {return false;}

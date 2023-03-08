@@ -8,6 +8,6 @@ public class HelpCommand extends Command{
     @Override
     public boolean execute(String arg){
         System.out.println("хз что это и как");
-        return false;
+        return true;
     }
 }

@@ -11,7 +11,7 @@ public class AddIfMaxCommand extends Command{
     private final CollectionManager collectionManager;
     private final ScannerManager scannerManager;
     public AddIfMaxCommand(CollectionManager collectionManager, ScannerManager scannerManager){
-        super("add if max {element}","add a new element if the number of students in the new group is more than in the others");
+        super("add_if_max {element}","add a new element if the number of students in the new group is more than in the others");
         this.collectionManager=collectionManager;
         this.scannerManager=scannerManager;
     }

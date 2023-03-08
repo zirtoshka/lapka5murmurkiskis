@@ -9,6 +9,7 @@ public class ExitCommand extends Command{
     @Override
     public boolean execute(String arg){
         ConsoleManager.printSuccess("Au revoir");
-        return false;
+        System.exit(0);
+        return true;
     }
 }
