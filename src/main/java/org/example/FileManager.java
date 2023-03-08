@@ -16,7 +16,7 @@ public class FileManager {
 
     public FileManager(String fileName){
         this.fileName = fileName;
-        path = System.getenv("PWD")+fileName;
+        path = System.getenv("PWD")+"/"+fileName;
     }
 
 
@@ -25,7 +25,7 @@ public class FileManager {
     }
     public String getPath(){return path;}
 
-    public ArrayDeque<StudyGroup> loadFromFile() throws IOException {
+    public ArrayDeque<StudyGroup> loadFromFile() {
         ReadYAMLParser yaml = new ReadYAMLParser();
         ArrayDeque<StudyGroup> studyGroupCollection = null;
         try {

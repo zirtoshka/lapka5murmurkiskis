@@ -26,7 +26,7 @@ public class CollectionManager {
         this.fileManager=fileManager;
     }
 
-    public void loadFromFile() throws IOException {
+    public void loadFromFile()  {
         this.studyGroupCollection = fileManager.loadFromFile();
         for (StudyGroup stg: studyGroupCollection) {
             idSet.add(stg.getId());

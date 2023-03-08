@@ -323,7 +323,7 @@ public class ScannerManager {
                 System.out.print(Main.INPUT_INFO);
                 answer = scanner.nextLine().trim();
                 if (answer.equals("")) throw new NotNullException();
-                if (!(answer.equals("+") && answer.equals("-"))) throw new IncorrectValueException();
+                if (!(answer.equals("+") || answer.equals("-"))) throw new IncorrectValueException();
                 break;
             } catch (NotNullException e) {
                 ConsoleManager.printError("I know that silence is golden. But what should I do with it? I only understand + and -");

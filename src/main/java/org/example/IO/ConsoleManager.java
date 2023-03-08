@@ -58,7 +58,7 @@ public class ConsoleManager {
         String arg = userCmd[1];
         switch (cmd){
             case "help":
-                if(!commandManager.help(arg)){
+                if(commandManager.help(arg)){
                     historyWriter.addInHistory("help");
                     return 1;
                 }
@@ -67,13 +67,13 @@ public class ConsoleManager {
                 ConsoleManager.printError("Well... This is an empty line... Maybe you want to ask something?");
                 break;
             case "info":
-                if(!commandManager.info(arg)){
+                if(commandManager.info(arg)){
                     historyWriter.addInHistory("info");
                    return 1;
                 }
                 break;
             case "show":
-                if (!commandManager.show(arg)){
+                if (commandManager.show(arg)){
                     historyWriter.addInHistory("show");
                     return 1;
                 } break;
@@ -83,62 +83,62 @@ public class ConsoleManager {
                     return 1;
                 }break;
             case "update_by_id":
-                if(!commandManager.updateById(arg)){
+                if(commandManager.updateById(arg)){
                     historyWriter.addInHistory("update_by_id");
                     return 1;
                 }break;
             case "remove_by_id":
-                if(!commandManager.removeById(arg)){
+                if(commandManager.removeById(arg)){
                     historyWriter.addInHistory("remove_by_id");
                     return 1;
                 }break;
             case "clear":
-                if(!commandManager.clear(arg)){
+                if(commandManager.clear(arg)){
                     historyWriter.addInHistory("clear");
                     return 1;
                 }break;
             case "save":
-                if(!commandManager.save(arg)){
+                if(commandManager.save(arg)){
                     historyWriter.addInHistory("save");
                     return 1;
                 } break;
             case "execute_script":
-                if(!commandManager.executeScript(arg)){
+                if(commandManager.executeScript(arg)){
                     historyWriter.addInHistory("execute_script");
-                    return 1;
-                } else return scriptMode(arg);
+                    return scriptMode(arg);
+                }
             case "exit":
-                if(!commandManager.exit(arg)){
+                if(commandManager.exit(arg)){
                     historyWriter.addInHistory("exit");
                     return 1;
                 }break;
             case "head":
-                if(!commandManager.head(arg)){
+                if(commandManager.head(arg)){
                     historyWriter.addInHistory("head");
                     return 1;
                 }break;
             case "add_if_max":
-                if(!commandManager.addIfMax(arg)){
+                if(commandManager.addIfMax(arg)){
                     historyWriter.addInHistory("add_if_max");
                     return 1;
                 }break;
             case "history":
-                if(!commandManager.history(arg)){
+                if(commandManager.history(arg)){
                     historyWriter.addInHistory("history");
                     return 1;
                 }break;
             case "filter_contains_name":
-                if(!commandManager.filterContainsName(arg)){
+                if(commandManager.filterContainsName(arg)){
                     historyWriter.addInHistory("filter_contains_name");
                     return 1;
                 }break;
             case "print_unique_group_admin":
-                if(!commandManager.printUniqueAdmin(arg)){
+                if(commandManager.printUniqueAdmin(arg)){
                     historyWriter.addInHistory("print_unique_group_admin");
                     return 1;
                 }break;
             case "print_field_descending_semester_enum":
-                if(!commandManager.printFieldDescendingSemester(arg)){
+                if(commandManager.printFieldDescendingSemester(arg)){
                     historyWriter.addInHistory("print_field_descending_semester_enum");
                     return 1;
                 }break;
@@ -164,10 +164,12 @@ public class ConsoleManager {
 
     }
     public int scriptMode(String arg) throws IOException {
+        String path;
         String[] userCmd={"",""};
         int cmdStatus;
         script.add(arg);
         try {
+            path = System.getenv("PWD")+"/"+arg;
             File file = new File(arg);
             if(file.exists() && !file.canRead()) throw new NoAccessToFileException();
             Scanner scriptScanner=new Scanner(file);
@@ -178,7 +180,7 @@ public class ConsoleManager {
             do {
                 userCmd=(scriptScanner.nextLine().trim()+" ").split(" ",2);
                 userCmd[1]=userCmd[1].trim();
-                while (scriptScanner.hasNextLine()&&userCmd[0].isEmpty()){
+                while (scriptScanner.hasNextLine() && userCmd[0].isEmpty()){
                     userCmd=(scriptScanner.nextLine().trim()+" ").split(" ",2);
                     userCmd[1]=userCmd[1].trim();
                 }
@@ -186,14 +188,13 @@ public class ConsoleManager {
                 if(userCmd[0].equals("execute_script")){
                     for (String scri:script){
                         if(userCmd[1].equals(scri)) throw new ScriptRecurentException();
-
                     }
                 }
                 cmdStatus=launchCmd(userCmd);
-            }while (cmdStatus==0&&scriptScanner.hasNextLine());
+            }while (cmdStatus==1&&scriptScanner.hasNextLine());
             scannerManager.setScanner(tmpScanner);
             scannerManager.setUserMode();
-            if(cmdStatus==1&&!(userCmd[0].equals("execute_script")&&!userCmd[1].isEmpty()))throw new IncorrectScriptException();
+            if(cmdStatus==0&&!userCmd[0].equals("execute_script")&&userCmd[1].isEmpty())throw new IncorrectScriptException();
             return cmdStatus;
         }catch (NoAccessToFileException e){
             ConsoleManager.printError("No rules");

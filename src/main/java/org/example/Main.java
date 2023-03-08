@@ -15,9 +15,9 @@ public class Main {
         Scanner userScanner=new Scanner(System.in);
         HistoryWriter historyWriter=new HistoryWriter();
         ScannerManager scannerManager = new ScannerManager(userScanner);
-        FileManager fileManager=new FileManager(new Scanner(System.in).nextLine());
+        //FileManager fileManager=new FileManager(new Scanner(System.in).nextLine());
 
-//        FileManager fileManager = new FileManager(args[0]);
+        FileManager fileManager = new FileManager(args[0]);
         CollectionManager collectionManager = new CollectionManager(fileManager);
         collectionManager.loadFromFile();
         CommandManager commandManager=new CommandManager(
@@ -29,38 +29,6 @@ public class Main {
                 new PrintFieldDescendingSemesterCommand(collectionManager));
         ConsoleManager consoleManager = new ConsoleManager(commandManager,scannerManager,userScanner, historyWriter);
         consoleManager.toStartMode();
-//        collectionManager.loadFromFile();
-//        collectionManager.writeToFile();
-//        System.out.println(collectionManager);
-
-
-//        StudyGroup rem = new StudyGroup();
-//        for (StudyGroup a: collectionManager.getStudyGroupCollection()) {
-//            if (a.getId()==2){
-//                rem=a;
-//            }
-////            System.out.println(a.getCreationDate());
-//        }
-//        System.out.println("trying to remove");
-//        collectionManager.removeFromCollection(rem);
-//        System.out.println(collectionManager);
-
-//
-//        AddCommand add = new AddCommand(collectionManager,scannerManager);
-//        add.execute("ssss");
-//        System.out.println(collectionManager.getStudyGroupCollection().getLast());
-////        collectionManager.getIdSet();
-
-//        InfoCommand info = new InfoCommand(collectionManager);
-//        info.execute("ddd");
-//        ShowCommand showCommand = new ShowCommand(collectionManager);
-//        showCommand.execute("dddd");
-//        SaveCommand save = new SaveCommand(collectionManager);
-//        save.execute("ddd");
-//        ClearCommand clearCommand=new ClearCommand(collectionManager);
-//        clearCommand.execute("dddd");
-//        HeadCommand head = new HeadCommand(collectionManager);
-//        head.execute("dddd");
 
 
 
