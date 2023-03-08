@@ -36,6 +36,8 @@ public class AddCommand extends Command {
             return true;
         } catch (ArgsException e) {
             ConsoleManager.printError("Usage: '" + getName() + "'");
+        }catch (BadScriptException e){
+            ConsoleManager.printError("Bad script");
         }
         return false;
     }
