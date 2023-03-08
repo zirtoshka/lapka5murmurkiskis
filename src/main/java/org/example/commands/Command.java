@@ -7,19 +7,19 @@ public abstract class Command {
     private String name;
     private String discription;
 
-    public Command(String name, String discription){
-        this.name=name;
-        this.discription=discription;
+    public Command(String name, String discription) {
+        this.name = name;
+        this.discription = discription;
     }
 
     public abstract boolean execute(String arg) throws IOException;
 
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public String getDiscription(){
+    public String getDiscription() {
         return discription;
     }
 
@@ -33,9 +33,9 @@ public abstract class Command {
 
     @Override
     public String toString() {
-        return "Command{"+
-                "name = '"+name+"', discription = '"+
-                discription+"}";
+        return "Command{" +
+                "name = '" + name + "', discription = '" +
+                discription + "}";
     }
 
     @Override

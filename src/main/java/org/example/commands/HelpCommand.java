@@ -1,13 +1,21 @@
 package org.example.commands;
 
-public class HelpCommand extends Command{
-    public HelpCommand(){
+import org.example.IO.ConsoleManager;
+import org.example.exceptions.ArgsException;
+
+public class HelpCommand extends Command {
+    public HelpCommand() {
         super("help", "display help on available commands");
     }
 
     @Override
-    public boolean execute(String arg){
-        System.out.println("хз что это и как");
-        return true;
+    public boolean execute(String arg) {
+        try {
+            if (!arg.isEmpty()) throw new ArgsException();
+            return true;
+        } catch (ArgsException e) {
+            ConsoleManager.printError("Usgae: '" + getName() + "'");
+        }
+        return false;
     }
 }

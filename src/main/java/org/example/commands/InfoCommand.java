@@ -2,6 +2,9 @@ package org.example.commands;
 
 import org.example.CollectionManager;
 import org.example.IO.ConsoleManager;
+import org.example.exceptions.ArgsException;
+import org.example.exceptions.NotNullException;
+import org.example.exceptions.NullCollectionException;
 
 import java.time.LocalDateTime;
 
@@ -15,18 +18,26 @@ public class InfoCommand extends Command {
 
     @Override
     public boolean execute(String arg) {
-        LocalDateTime lastInitTime = collectionManager.getLastInitTime();
-        String lastInitTimeStr = (lastInitTime == null) ? "No command in this session" :
-                lastInitTime.toString();
-        LocalDateTime lastSaveTime = collectionManager.getLastSaveTime();
-        String lastSaveTimeStr = (lastSaveTime == null) ? "No saves in this session" :
-                lastSaveTime.toString();
-        ConsoleManager.printInfo("Collection info:");
-        ConsoleManager.printInfo(" Type: " + collectionManager.collectionType());
-        ConsoleManager.printInfo(" Quantity: " + collectionManager.collectionSize());
-        ConsoleManager.printInfo(" Last save: " + lastSaveTimeStr);
-        ConsoleManager.printInfo(" Last enter: " + lastInitTimeStr);
-        return true;
-//        return false;
+        try {
+            if (!arg.isEmpty()) throw new ArgsException();
+            if (collectionManager.collectionSize() == 0) throw new NullCollectionException();
+            LocalDateTime lastInitTime = collectionManager.getLastInitTime();
+            String lastInitTimeStr = (lastInitTime == null) ? "No command in this session" :
+                    lastInitTime.toString();
+            LocalDateTime lastSaveTime = collectionManager.getLastSaveTime();
+            String lastSaveTimeStr = (lastSaveTime == null) ? "No saves in this session" :
+                    lastSaveTime.toString();
+            ConsoleManager.printInfo("Collection info:");
+            ConsoleManager.printInfo(" Type: " + collectionManager.collectionType());
+            ConsoleManager.printInfo(" Quantity: " + collectionManager.collectionSize());
+            ConsoleManager.printInfo(" Last save: " + lastSaveTimeStr);
+            ConsoleManager.printInfo(" Last enter: " + lastInitTimeStr);
+            return true;
+        } catch (ArgsException e) {
+            ConsoleManager.printError("Usage: '" + getName() + "'");
+        } catch (NullCollectionException e) {
+            ConsoleManager.printError("Collection is empty");
+        }
+        return false;
     }
 }

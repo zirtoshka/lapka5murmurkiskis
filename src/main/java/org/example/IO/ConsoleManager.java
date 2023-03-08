@@ -1,12 +1,19 @@
 package org.example.IO;
 
+import org.example.CollectionManager;
 import org.example.CommandManager;
 import org.example.HistoryWriter;
 import org.example.Main;
+import org.example.exceptions.IncorrectScriptException;
+import org.example.exceptions.NoAccessToFileException;
+import org.example.exceptions.ScriptRecurentException;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ConsoleManager {
@@ -43,12 +50,9 @@ public class ConsoleManager {
         System.out.println("\u001B[33m" + message + "\u001B[0m");
     }
 
-    public int scriptMode(String[] userCommand) {
-//        switch ()
-        return 0;
-    }
 
-    //DELETE IOEXCEPTION!!!!!!!!????????/
+
+
     public int launchCmd(String[] userCmd) throws IOException {
         String cmd=userCmd[0];
         String arg = userCmd[1];
@@ -102,7 +106,7 @@ public class ConsoleManager {
                 if(!commandManager.executeScript(arg)){
                     historyWriter.addInHistory("execute_script");
                     return 1;
-                } break;
+                } else return scriptMode(arg);
             case "exit":
                 if(!commandManager.exit(arg)){
                     historyWriter.addInHistory("exit");
@@ -145,7 +149,7 @@ public class ConsoleManager {
         }
         return 0;
     }
-    //DELETE IOEXCEPTION!!!!!!!!????????/
+
     public void toStartMode() throws IOException{
         String[] userCmd = {"", ""};
         int cmdStatus;
@@ -158,6 +162,53 @@ public class ConsoleManager {
         } while (cmdStatus != 2);
 
 
+    }
+    public int scriptMode(String arg) throws IOException {
+        String[] userCmd={"",""};
+        int cmdStatus;
+        script.add(arg);
+        try {
+            File file = new File(arg);
+            if(file.exists() && !file.canRead()) throw new NoAccessToFileException();
+            Scanner scriptScanner=new Scanner(file);
+            if (!scriptScanner.hasNext()) throw new NoSuchElementException();
+            Scanner tmpScanner=scannerManager.getScanner();
+            scannerManager.setScanner(scriptScanner);
+            scannerManager.setFileMode();
+            do {
+                userCmd=(scriptScanner.nextLine().trim()+" ").split(" ",2);
+                userCmd[1]=userCmd[1].trim();
+                while (scriptScanner.hasNextLine()&&userCmd[0].isEmpty()){
+                    userCmd=(scriptScanner.nextLine().trim()+" ").split(" ",2);
+                    userCmd[1]=userCmd[1].trim();
+                }
+                System.out.println(Main.INPUT_COMMAND+String.join(" ",userCmd));
+                if(userCmd[0].equals("execute_script")){
+                    for (String scri:script){
+                        if(userCmd[1].equals(scri)) throw new ScriptRecurentException();
+
+                    }
+                }
+                cmdStatus=launchCmd(userCmd);
+            }while (cmdStatus==0&&scriptScanner.hasNextLine());
+            scannerManager.setScanner(tmpScanner);
+            scannerManager.setUserMode();
+            if(cmdStatus==1&&!(userCmd[0].equals("execute_script")&&!userCmd[1].isEmpty()))throw new IncorrectScriptException();
+            return cmdStatus;
+        }catch (NoAccessToFileException e){
+            ConsoleManager.printError("No rules");
+        }catch (NoSuchElementException e){
+            ConsoleManager.printError("I can't do anything with empty file");
+        } catch (FileNotFoundException e){
+            ConsoleManager.printError("No such file with script");
+        }catch (ScriptRecurentException e){
+            ConsoleManager.printError("Recurrent is cool, but I don't know how to use it");
+        }catch (IncorrectScriptException e){
+            ConsoleManager.printError("Script is incorrect");
+        }finally {
+            script.remove(script.size()-1);
+        }
+        return 1;
     }
 }
 

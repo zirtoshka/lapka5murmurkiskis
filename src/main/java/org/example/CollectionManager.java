@@ -1,27 +1,20 @@
 package org.example;
 
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.example.description_for_collection.StudyGroup;
-import org.example.parserYAML.WriteYAMLParses;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayDeque;
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
 
 public class CollectionManager {
     private ArrayDeque<StudyGroup> studyGroupCollection;
-    private Set<Integer> idSet = new HashSet<>(); //буду чекать среди сущ id
-//    public void getIdSet(){
-//        for(Integer a:idSet){
-//            System.out.print(a+" ");
-//        }
-//    }
+    private Set<Integer> idSet = new HashSet<>();
+
     private Integer newId = 1;
     private FileManager fileManager;
-//    FileManager fileManager = new FileManager(new Scanner(System.in).nextLine());
+
     private java.time.LocalDateTime lastInitTime;
     private LocalDateTime lastSaveTime;
 
@@ -40,8 +33,8 @@ public class CollectionManager {
         }
     }
 
-    public void writeToFile() throws IOException {
-        fileManager.write(studyGroupCollection);
+    public void writeToFile() {
+        fileManager.write(this.studyGroupCollection);
     }
 
     public ArrayDeque<StudyGroup> getStudyGroupCollection() {
@@ -52,7 +45,6 @@ public class CollectionManager {
         while (!idSet.add(newId)) {
             newId++;
         }
-//        System.out.println(newId);
         return newId;
     }
     public void addToCollection(StudyGroup studyGroupFromUser){
@@ -69,8 +61,8 @@ public class CollectionManager {
         return studyGroupCollection.size();
     }
     public void clearCollection(){ studyGroupCollection.clear();}
-    public void saveCollection() throws IOException {
-        fileManager.write(studyGroupCollection); //зачем-то хочет бросатьтся хз
+    public void saveCollection() {
+        this.writeToFile();
         lastSaveTime = LocalDateTime.now();
     }
     public String headOfCollection(){
@@ -114,7 +106,7 @@ public class CollectionManager {
     }
 
 
-    //запихнуть в метод??????
+
 
 
 }

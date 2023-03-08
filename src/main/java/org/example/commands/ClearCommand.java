@@ -2,18 +2,26 @@ package org.example.commands;
 
 import org.example.CollectionManager;
 import org.example.IO.ConsoleManager;
+import org.example.exceptions.ArgsException;
 
-public class ClearCommand extends Command{
+public class ClearCommand extends Command {
     private final CollectionManager collectionManager;
-    public ClearCommand(CollectionManager collectionManager){
+
+    public ClearCommand(CollectionManager collectionManager) {
         super("clear", "clear collection");
-        this.collectionManager=collectionManager;
+        this.collectionManager = collectionManager;
     }
 
     @Override
     public boolean execute(String arg) {
-        collectionManager.clearCollection();
-        ConsoleManager.printSuccess("Collection is cleared");
+        try {
+            if (!arg.isEmpty()) throw new ArgsException();
+            collectionManager.clearCollection();
+            ConsoleManager.printSuccess("Collection is cleared");
+            return true;
+        } catch (ArgsException e) {
+            ConsoleManager.printError("Usage: '" + getName() + "'");
+        }
         return false;
     }
 }

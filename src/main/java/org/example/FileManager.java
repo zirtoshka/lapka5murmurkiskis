@@ -1,6 +1,8 @@
 package org.example;
 
+import org.example.IO.ConsoleManager;
 import org.example.description_for_collection.StudyGroup;
+import org.example.exceptions.NotNullException;
 import org.example.parserYAML.ReadYAMLParser;
 import org.example.parserYAML.WriteYAMLParses;
 
@@ -25,16 +27,31 @@ public class FileManager {
 
     public ArrayDeque<StudyGroup> loadFromFile() throws IOException {
         ReadYAMLParser yaml = new ReadYAMLParser();
-        ArrayDeque<StudyGroup> studyGroupCollection = yaml.read(path);
-//        for (StudyGroup a: studyGroupCollection){
-//            System.out.println(a);
-//        }
+        ArrayDeque<StudyGroup> studyGroupCollection = null;
+        try {
+            if (path.isEmpty()) throw new NotNullException();
+            studyGroupCollection = yaml.read(path);
+        } catch (NotNullException e) {
+            ConsoleManager.printError("can't be empty");
+            System.exit(0);
+        }catch (IOException | NullPointerException e){
+            ConsoleManager.printError("No access");
+            System.exit(0);
+        }
         return studyGroupCollection;
     }
-    public void write(ArrayDeque<StudyGroup> studyGroupCollection) throws IOException{
-        WriteYAMLParses writeYAMLParses = new WriteYAMLParses();
-        writeYAMLParses.write(studyGroupCollection);
+    public void write(ArrayDeque<StudyGroup> studyGroupCollection){
+        try {
+            if(fileName.isEmpty()) throw new NotNullException();
+            WriteYAMLParses writeYAMLParses = new WriteYAMLParses();
+            writeYAMLParses.write(studyGroupCollection);
+        } catch (NotNullException | IOException e){
+            ConsoleManager.printError("No access");
+            System.exit(0);
+        }
+        }
+
     }
 
 
-}
+

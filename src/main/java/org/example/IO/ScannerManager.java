@@ -1,20 +1,17 @@
 package org.example.IO;
-
 import org.example.Main;
 import org.example.description_for_collection.*;
 import org.example.exceptions.IncorrectValueException;
 import org.example.exceptions.NotNullException;
 import org.example.exceptions.WrongNameException;
-
-import java.io.IOException;
 import java.util.Date;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class ScannerManager {
     private final double MAX_X = 576;
     private final float MIN_Y = -596;
+    private boolean filemode;
     private Pattern patternSymbols = Pattern.compile("\\w*");
     private Pattern patternNumber = Pattern.compile("(-?)\\d+(.\\d+)?");
 
@@ -305,5 +302,18 @@ public class ScannerManager {
             }
         }
         return answer.equals("+");
+    }
+    public Scanner getScanner(){
+        return scanner;
+    }
+    public void setScanner(Scanner scanner){
+        this.scanner=scanner;
+    }
+    public void setFileMode() {
+        filemode = true;
+    }
+
+    public void setUserMode() {
+        filemode = false;
     }
 }
