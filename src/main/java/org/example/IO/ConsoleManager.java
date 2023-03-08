@@ -74,7 +74,7 @@ public class ConsoleManager {
                     return 1;
                 } break;
             case "add":
-                if (!commandManager.add(arg)){
+                if (commandManager.add(arg)){
                     historyWriter.addInHistory("add");
                     return 1;
                 }break;

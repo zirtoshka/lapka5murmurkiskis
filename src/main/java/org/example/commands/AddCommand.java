@@ -15,7 +15,7 @@ public class AddCommand  extends Command{
 
     public boolean execute(String arg){
 //        try {
-            if(!arg.isEmpty()){
+            if(arg.isEmpty()){
                 collectionManager.addToCollection(
                         new StudyGroup(
                              collectionManager.generateId(),

@@ -1,92 +1,46 @@
 ---
 - id: 1
-  name: "loool"
+  name: "122"
   coordinates:
     coordinatesX: 1.0
-    coordinatesY: 3.0
+    coordinatesY: 1.0
   creationDate:
-  - -1000
-  - 2
-  - 20
-  - 20
-  - 25
-  - 38
-  - 736348000
-  studentsCount: 30
+  - 2023
+  - 3
+  - 8
+  - 14
+  - 18
+  - 46
+  - 185927000
+  studentsCount: 1
   shouldBeExpelled: 1
-  averageMark: 5.0
+  averageMark: 1.0
   semesterEnum: "FIRST"
   groupAdmin:
-    name: "puk"
-    birthday: 1048204800000
+    name: "aa"
+    birthday: -20404753200000
     eyeColor: "GREEN"
     hairColor: "RED"
-    nationality: "NORTH_KOREA"
+    nationality: "VATICAN"
 - id: 2
-  name: "koook"
-  coordinates:
-    coordinatesX: 1.0
-    coordinatesY: 3.0
-  creationDate:
-  - 2023
-  - 2
-  - 20
-  - 20
-  - 25
-  - 38
-  - 736348000
-  studentsCount: 30
-  shouldBeExpelled: 1
-  averageMark: 5.0
-  semesterEnum: "FIRST"
-  groupAdmin:
-    name: "sos"
-    birthday: 1048204800000
-    eyeColor: "GREEN"
-    hairColor: "RED"
-    nationality: "NORTH_KOREA"
-- id: 3
-  name: "dsfdfsdfdf"
-  coordinates:
-    coordinatesX: 1.0
-    coordinatesY: 3.0
-  creationDate:
-  - 2023
-  - 2
-  - 20
-  - 20
-  - 25
-  - 38
-  - 736348000
-  studentsCount: 30
-  shouldBeExpelled: 1
-  averageMark: 5.0
-  semesterEnum: "FIRST"
-  groupAdmin:
-    name: "sos"
-    birthday: 1048204800000
-    eyeColor: "GREEN"
-    hairColor: "RED"
-    nationality: "NORTH_KOREA"
-- id: 4
-  name: "gugi"
+  name: "vehvehveh"
   coordinates:
     coordinatesX: 3.0
     coordinatesY: 4.0
   creationDate:
   - 2023
   - 3
-  - 7
-  - 12
-  - 50
-  - 29
-  - 246663000
+  - 8
+  - 14
+  - 21
+  - 11
+  - 857057000
   studentsCount: 4
-  shouldBeExpelled: 3
-  averageMark: 45.0
+  shouldBeExpelled: 4
+  averageMark: 4.0
   semesterEnum: "FIRST"
   groupAdmin:
-    name: "didus"
+    name: "feg"
     birthday: 1081454400000
     eyeColor: "GREEN"
     hairColor: "RED"

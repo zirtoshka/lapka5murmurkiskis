@@ -25,7 +25,7 @@ public class Main {
                 new AddCommand(collectionManager,scannerManager), new UpdateByIdCommand(collectionManager,scannerManager),
                 new RemoveByIdCommand(collectionManager), new ClearCommand(collectionManager), new SaveCommand(collectionManager),
                 new ExecuteScriptCommand(), new ExitCommand(), new HeadCommand(collectionManager), new AddIfMaxCommand(collectionManager,scannerManager),
-                new HistoryCommand(historyWriter), new FilterContainsNameCommand(), new PrintUniqueGroupAdminCommand(),
+                new HistoryCommand(historyWriter), new FilterContainsNameCommand(collectionManager), new PrintUniqueGroupAdminCommand(),
                 new PrintFieldDescendingSemesterCommand());
         ConsoleManager consoleManager = new ConsoleManager(commandManager,scannerManager,userScanner, historyWriter);
         consoleManager.toStartMode();
