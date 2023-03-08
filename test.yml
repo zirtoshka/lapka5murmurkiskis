@@ -17,7 +17,7 @@
   averageMark: 1.0
   semesterEnum: "FIRST"
   groupAdmin:
-    name: "aa"
+    name: "goga"
     birthday: -20404753200000
     eyeColor: "GREEN"
     hairColor: "RED"
@@ -40,7 +40,53 @@
   averageMark: 4.0
   semesterEnum: "FIRST"
   groupAdmin:
-    name: "feg"
+    name: "goga"
+    birthday: 1081454400000
+    eyeColor: "GREEN"
+    hairColor: "RED"
+    nationality: "VATICAN"
+- id: 3
+  name: "vehvehveh"
+  coordinates:
+    coordinatesX: 3.0
+    coordinatesY: 4.0
+  creationDate:
+    - 2023
+    - 3
+    - 8
+    - 14
+    - 21
+    - 11
+    - 857057000
+  studentsCount: 4
+  shouldBeExpelled: 4
+  averageMark: 4.0
+  semesterEnum: "FIRST"
+  groupAdmin:
+    name: "oleg"
+    birthday: 1081454400000
+    eyeColor: "GREEN"
+    hairColor: "RED"
+    nationality: "VATICAN"
+- id: 4
+  name: "vehvehveh"
+  coordinates:
+    coordinatesX: 3.0
+    coordinatesY: 4.0
+  creationDate:
+    - 2023
+    - 3
+    - 8
+    - 14
+    - 21
+    - 11
+    - 857057000
+  studentsCount: 4
+  shouldBeExpelled: 4
+  averageMark: 4.0
+  semesterEnum: "FIRST"
+  groupAdmin:
+    name: "puk"
     birthday: 1081454400000
     eyeColor: "GREEN"
     hairColor: "RED"

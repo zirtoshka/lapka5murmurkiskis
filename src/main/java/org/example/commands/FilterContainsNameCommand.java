@@ -13,12 +13,18 @@ public class FilterContainsNameCommand extends Command{
     @Override
     public boolean execute(String arg){
         String name=arg;
+        boolean isDone=false;
         for (StudyGroup sg: collectionManager.getStudyGroupCollection()
              ) { if(sg.getName().contains(name)){
             ConsoleManager.printInfo1(sg.getName());
+            isDone=true;
+            }
+        }
+        if (!isDone){
+            ConsoleManager.printForNothing("I can't find smth with "+name);
         }
 
-        }
+
         return true;
     }
 }
