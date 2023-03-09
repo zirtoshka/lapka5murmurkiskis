@@ -44,7 +44,7 @@ public class AddIfMaxCommand extends Command {
             ConsoleManager.printError("Usage: '" + getName() + "'");
         } catch (NullCollectionException e) {
             ConsoleManager.printError("Collection is empty");
-        } catch (BadScriptException e){
+        } catch (BadScriptException e) {
             ConsoleManager.printError("Bad script");
         }
         return false;

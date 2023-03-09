@@ -14,27 +14,24 @@ import java.util.Scanner;
 public class Main {
     public static final String INPUT_COMMAND = "$ ";
     public static final String INPUT_INFO = "> ";
+
     public static void main(String[] args) throws IOException {
-        Scanner userScanner=new Scanner(System.in);
-        HistoryWriter historyWriter=new HistoryWriter();
+        Scanner userScanner = new Scanner(System.in);
+        HistoryWriter historyWriter = new HistoryWriter();
         ScannerManager scannerManager = new ScannerManager(userScanner);
         //FileManager fileManager=new FileManager(new Scanner(System.in).nextLine());
-
         FileManager fileManager = new FileManager(args[0]);
         CollectionManager collectionManager = new CollectionManager(fileManager);
         collectionManager.loadFromFile();
-        CommandManager commandManager=new CommandManager(
+        CommandManager commandManager = new CommandManager(
                 new HelpCommand(), new InfoCommand(collectionManager), new ShowCommand(collectionManager),
-                new AddCommand(collectionManager,scannerManager), new UpdateByIdCommand(collectionManager,scannerManager),
+                new AddCommand(collectionManager, scannerManager), new UpdateByIdCommand(collectionManager, scannerManager),
                 new RemoveByIdCommand(collectionManager), new ClearCommand(collectionManager), new SaveCommand(collectionManager),
-                new ExecuteScriptCommand(), new ExitCommand(), new HeadCommand(collectionManager), new AddIfMaxCommand(collectionManager,scannerManager),
+                new ExecuteScriptCommand(), new ExitCommand(), new HeadCommand(collectionManager), new AddIfMaxCommand(collectionManager, scannerManager),
                 new HistoryCommand(historyWriter), new FilterContainsNameCommand(collectionManager), new PrintUniqueGroupAdminCommand(collectionManager),
                 new PrintFieldDescendingSemesterCommand(collectionManager));
-        ConsoleManager consoleManager = new ConsoleManager(commandManager,scannerManager,userScanner, historyWriter);
+        ConsoleManager consoleManager = new ConsoleManager(commandManager, scannerManager, userScanner, historyWriter);
         consoleManager.toStartMode();
-
-
-
 
 
     }

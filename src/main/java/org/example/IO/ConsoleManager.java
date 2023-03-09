@@ -50,14 +50,12 @@ public class ConsoleManager {
     }
 
 
-
-
     public int launchCmd(String[] userCmd) throws IOException {
-        String cmd=userCmd[0];
+        String cmd = userCmd[0];
         String arg = userCmd[1];
-        switch (cmd){
+        switch (cmd) {
             case "help":
-                if(commandManager.help(arg)){
+                if (commandManager.help(arg)) {
                     historyWriter.addInHistory("help");
                     return 1;
                 }
@@ -66,81 +64,94 @@ public class ConsoleManager {
                 ConsoleManager.printError("Well... This is an empty line... Maybe you want to ask something?");
                 break;
             case "info":
-                if(commandManager.info(arg)){
+                if (commandManager.info(arg)) {
                     historyWriter.addInHistory("info");
-                   return 1;
+                    return 1;
                 }
                 break;
             case "show":
-                if (commandManager.show(arg)){
+                if (commandManager.show(arg)) {
                     historyWriter.addInHistory("show");
                     return 1;
-                } break;
+                }
+                break;
             case "add":
-                if (commandManager.add(arg)){
+                if (commandManager.add(arg)) {
                     historyWriter.addInHistory("add");
                     return 1;
-                }break;
+                }
+                break;
             case "update_by_id":
-                if(commandManager.updateById(arg)){
+                if (commandManager.updateById(arg)) {
                     historyWriter.addInHistory("update_by_id");
                     return 1;
-                }break;
+                }
+                break;
             case "remove_by_id":
-                if(commandManager.removeById(arg)){
+                if (commandManager.removeById(arg)) {
                     historyWriter.addInHistory("remove_by_id");
                     return 1;
-                }break;
+                }
+                break;
             case "clear":
-                if(commandManager.clear(arg)){
+                if (commandManager.clear(arg)) {
                     historyWriter.addInHistory("clear");
                     return 1;
-                }break;
+                }
+                break;
             case "save":
-                if(commandManager.save(arg)){
+                if (commandManager.save(arg)) {
                     historyWriter.addInHistory("save");
                     return 1;
-                } break;
+                }
+                break;
             case "execute_script":
-                if(commandManager.executeScript(arg)){
+                if (commandManager.executeScript(arg)) {
                     historyWriter.addInHistory("execute_script");
                     return scriptMode(arg);
                 }
             case "exit":
-                if(commandManager.exit(arg)){
+                if (commandManager.exit(arg)) {
                     historyWriter.addInHistory("exit");
                     return 1;
-                }break;
+                }
+                break;
             case "head":
-                if(commandManager.head(arg)){
+                if (commandManager.head(arg)) {
                     historyWriter.addInHistory("head");
                     return 1;
-                }break;
+                }
+                break;
             case "add_if_max":
-                if(commandManager.addIfMax(arg)){
+                if (commandManager.addIfMax(arg)) {
                     historyWriter.addInHistory("add_if_max");
                     return 1;
-                }break;
+                }
+                break;
             case "history":
-                if(commandManager.history(arg)){
+                if (commandManager.history(arg)) {
                     historyWriter.addInHistory("history");
                     return 1;
-                }break;
+                }
+                break;
             case "filter_contains_name":
-                if(commandManager.filterContainsName(arg)){
+                if (commandManager.filterContainsName(arg)) {
                     historyWriter.addInHistory("filter_contains_name");
                     return 1;
-                }break;
+                }
+                break;
             case "print_unique_group_admin":
-                if(commandManager.printUniqueAdmin(arg)){
+                if (commandManager.printUniqueAdmin(arg)) {
                     historyWriter.addInHistory("print_unique_group_admin");
                     return 1;
-                }break;
+                }
+                break;
             case "print_field_descending_semester_enum":
-                if(commandManager.printFieldDescendingSemester(arg)){
+                if (commandManager.printFieldDescendingSemester(arg)) {
                     historyWriter.addInHistory("print_field_descending_semester_enum");
                     return 1;
-                }break;
+                }
+                break;
             default:
                 historyWriter.addInHistory("I don't know this command:((");
                 ConsoleManager.printError("No such command as in list");
@@ -149,7 +160,7 @@ public class ConsoleManager {
         return 0;
     }
 
-    public void toStartMode() throws IOException{
+    public void toStartMode() throws IOException {
         String[] userCmd = {"", ""};
         int cmdStatus;
 
@@ -162,51 +173,53 @@ public class ConsoleManager {
 
 
     }
+
     public int scriptMode(String arg) throws IOException {
         String path;
-        String[] userCmd={"",""};
+        String[] userCmd = {"", ""};
         int cmdStatus;
         script.add(arg);
         try {
-            path = System.getenv("PWD")+"/"+arg;
+            path = System.getenv("PWD") + "/" + arg;
             File file = new File(arg);
-            if(file.exists() && !file.canRead()) throw new NoAccessToFileException();
-            Scanner scriptScanner=new Scanner(file);
+            if (file.exists() && !file.canRead()) throw new NoAccessToFileException();
+            Scanner scriptScanner = new Scanner(file);
             if (!scriptScanner.hasNext()) throw new NoSuchElementException();
-            Scanner tmpScanner=scannerManager.getScanner();
+            Scanner tmpScanner = scannerManager.getScanner();
             scannerManager.setScanner(scriptScanner);
             scannerManager.setFileMode();
             do {
-                userCmd=(scriptScanner.nextLine().trim()+" ").split(" ",2);
-                userCmd[1]=userCmd[1].trim();
-                while (scriptScanner.hasNextLine() && userCmd[0].isEmpty()){
-                    userCmd=(scriptScanner.nextLine().trim()+" ").split(" ",2);
-                    userCmd[1]=userCmd[1].trim();
+                userCmd = (scriptScanner.nextLine().trim() + " ").split(" ", 2);
+                userCmd[1] = userCmd[1].trim();
+                while (scriptScanner.hasNextLine() && userCmd[0].isEmpty()) {
+                    userCmd = (scriptScanner.nextLine().trim() + " ").split(" ", 2);
+                    userCmd[1] = userCmd[1].trim();
                 }
-                System.out.println(Main.INPUT_COMMAND+String.join(" ",userCmd));
-                if(userCmd[0].equals("execute_script")){
-                    for (String scri:script){
-                        if(userCmd[1].equals(scri)) throw new ScriptRecurentException();
+                System.out.println(Main.INPUT_COMMAND + String.join(" ", userCmd));
+                if (userCmd[0].equals("execute_script")) {
+                    for (String scri : script) {
+                        if (userCmd[1].equals(scri)) throw new ScriptRecurentException();
                     }
                 }
-                cmdStatus=launchCmd(userCmd);
-            }while (cmdStatus==1&&scriptScanner.hasNextLine());
+                cmdStatus = launchCmd(userCmd);
+            } while (cmdStatus == 1 && scriptScanner.hasNextLine());
             scannerManager.setScanner(tmpScanner);
             scannerManager.setUserMode();
-            if(cmdStatus==0&&!userCmd[0].equals("execute_script")&&userCmd[1].isEmpty())throw new IncorrectScriptException();
+            if (cmdStatus == 0 && !userCmd[0].equals("execute_script") && userCmd[1].isEmpty())
+                throw new IncorrectScriptException();
             return cmdStatus;
-        }catch (NoAccessToFileException e){
+        } catch (NoAccessToFileException e) {
             ConsoleManager.printError("No rules");
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             ConsoleManager.printError("I can't do anything with empty file");
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             ConsoleManager.printError("No such file with script");
-        }catch (ScriptRecurentException e){
+        } catch (ScriptRecurentException e) {
             ConsoleManager.printError("Recurrent is cool, but I don't know how to use it");
-        }catch (IncorrectScriptException e){
+        } catch (IncorrectScriptException e) {
             ConsoleManager.printError("Script is incorrect");
-        }finally {
-            script.remove(script.size()-1);
+        } finally {
+            script.remove(script.size() - 1);
         }
         return 1;
     }

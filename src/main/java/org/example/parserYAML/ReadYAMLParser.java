@@ -20,17 +20,12 @@ import java.util.Objects;
 
 public class ReadYAMLParser {
 
-    public ArrayDeque<StudyGroup> read(String path) throws FileNotFoundException, IOException {
-        //тырпы
-//        filename = System.getenv("PWD")+filename;
+    public ArrayDeque<StudyGroup> read(String path) throws IOException {
         FileReader file = new FileReader(path);
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
         objectMapper.registerModule(new JavaTimeModule());
         ArrayDeque<StudyGroup> collectionFromFile = objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(ArrayDeque.class, StudyGroup.class));
-//        System.out.println(collectionFromFile);
         return collectionFromFile;
-
-
         //snakeyaml is кринж
 //        File file = new File(System.getenv("PWD")+ filename);
 //        System.out.println(file+"ddddd");
@@ -43,8 +38,5 @@ public class ReadYAMLParser {
 //        System.out.println(obj);
 
     }
-
-
-
 }
 

@@ -7,6 +7,8 @@ import org.example.description_for_collection.StudyGroup;
 import org.example.exceptions.ArgsException;
 import org.example.exceptions.BadScriptException;
 
+import java.io.IOException;
+
 public class AddCommand extends Command {
     private final CollectionManager collectionManager;
     private final ScannerManager scannerManager;
@@ -36,7 +38,7 @@ public class AddCommand extends Command {
             return true;
         } catch (ArgsException e) {
             ConsoleManager.printError("Usage: '" + getName() + "'");
-        }catch (BadScriptException e){
+        } catch (BadScriptException e) {
             ConsoleManager.printError("Bad script");
         }
         return false;

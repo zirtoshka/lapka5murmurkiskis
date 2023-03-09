@@ -1,27 +1,4 @@
 ---
-- id: 1
-  name: "122"
-  coordinates:
-    coordinatesX: 1.0
-    coordinatesY: 1.0
-  creationDate:
-  - 2023
-  - 3
-  - 8
-  - 14
-  - 18
-  - 46
-  - 185927000
-  studentsCount: 1
-  shouldBeExpelled: 1
-  averageMark: 1.0
-  semesterEnum: "SECOND"
-  groupAdmin:
-    name: "goga"
-    birthday: -20404753200000
-    eyeColor: "GREEN"
-    hairColor: "RED"
-    nationality: "VATICAN"
 - id: 2
   name: "vehvehveh"
   coordinates:
@@ -134,6 +111,29 @@
   groupAdmin:
     name: "qdfghgjghdgsf"
     birthday: 7773609706681345152
+    eyeColor: "GREEN"
+    hairColor: "RED"
+    nationality: "VATICAN"
+- id: 1
+  name: "JDKJDHJKDHKDJ"
+  coordinates:
+    coordinatesX: 1.0
+    coordinatesY: 1.0
+  creationDate:
+  - 2023
+  - 3
+  - 8
+  - 14
+  - 18
+  - 46
+  - 185927000
+  studentsCount: 1
+  shouldBeExpelled: 1
+  averageMark: 1.0
+  semesterEnum: "SECOND"
+  groupAdmin:
+    name: "goga"
+    birthday: -20404753200000
     eyeColor: "GREEN"
     hairColor: "RED"
     nationality: "VATICAN"

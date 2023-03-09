@@ -44,7 +44,7 @@ public class FileManager {
         try {
             if(fileName.isEmpty()) throw new NotNullException();
             WriteYAMLParses writeYAMLParses = new WriteYAMLParses();
-            writeYAMLParses.write(studyGroupCollection);
+            writeYAMLParses.write(studyGroupCollection,path);
         } catch (NotNullException | IOException e){
             ConsoleManager.printError("No access");
             System.exit(0);

@@ -18,16 +18,15 @@ public class CollectionManager {
     private LocalDateTime lastSaveTime;
 
 
-
     public CollectionManager(FileManager fileManager) {
-        this.lastInitTime=null;
-        this.lastSaveTime=null;
-        this.fileManager=fileManager;
+        this.lastInitTime = null;
+        this.lastSaveTime = null;
+        this.fileManager = fileManager;
     }
 
-    public void loadFromFile()  {
+    public void loadFromFile() {
         this.studyGroupCollection = fileManager.loadFromFile();
-        for (StudyGroup stg: studyGroupCollection) {
+        for (StudyGroup stg : studyGroupCollection) {
             idSet.add(stg.getId());
         }
     }
@@ -46,66 +45,82 @@ public class CollectionManager {
         }
         return newId;
     }
-    public void addToCollection(StudyGroup studyGroupFromUser){
+
+    public void addToCollection(StudyGroup studyGroupFromUser) {
         studyGroupCollection.addLast(studyGroupFromUser);
     }
-    public LocalDateTime getLastInitTime(){
+
+    public LocalDateTime getLastInitTime() {
         return lastInitTime;
     }
-    public LocalDateTime getLastSaveTime(){return lastSaveTime;}
-    public String collectionType(){
+
+    public LocalDateTime getLastSaveTime() {
+        return lastSaveTime;
+    }
+
+    public String collectionType() {
         return studyGroupCollection.getClass().getName();
     }
-    public int collectionSize(){
+
+    public int collectionSize() {
         return studyGroupCollection.size();
     }
-    public void clearCollection(){ studyGroupCollection.clear();}
+
+    public void clearCollection() {
+        studyGroupCollection.clear();
+    }
+
     public void saveCollection() {
         this.writeToFile();
         lastSaveTime = LocalDateTime.now();
     }
-    public String headOfCollection(){
+
+    public String headOfCollection() {
         return studyGroupCollection.getFirst().toString();
     }
-    public StudyGroup getById(Integer id){
-        for (StudyGroup studyGroup: studyGroupCollection){
-            if (studyGroup.getId().equals(id)){
+
+    public StudyGroup getById(Integer id) {
+        for (StudyGroup studyGroup : studyGroupCollection) {
+            if (studyGroup.getId().equals(id)) {
                 return studyGroup;
             }
         }
         return null;
     }
-    public void removeFromCollection(StudyGroup studyGroup){
+
+    public void removeFromCollection(StudyGroup studyGroup) {
         studyGroupCollection.remove(studyGroup);
     }
-    public void removeById(StudyGroup studyGroup){
+
+    public void removeById(StudyGroup studyGroup) {
         idSet.remove(studyGroup.getId());
         studyGroupCollection.remove(studyGroup);
     }
-    public int getMaxNumberInGroup(){
-        int res =-1;
-        for(StudyGroup group: studyGroupCollection){
-            if (group.getStudentsCount()>res){
-                res=group.getStudentsCount();}}
-        return res;}
+
+    public int getMaxNumberInGroup() {
+        int res = -1;
+        for (StudyGroup group : studyGroupCollection) {
+            if (group.getStudentsCount() > res) {
+                res = group.getStudentsCount();
+            }
+        }
+        return res;
+    }
 
     @Override
     public String toString() {
-        if (studyGroupCollection.isEmpty()){
+        if (studyGroupCollection.isEmpty()) {
             return "Collection is empty(((";
         }
         StringBuilder info = new StringBuilder();
-        for (StudyGroup studyGroup: studyGroupCollection){
+        for (StudyGroup studyGroup : studyGroupCollection) {
             info.append(studyGroup.toString());
-            if (studyGroup!=studyGroupCollection.getLast()){
+            if (studyGroup != studyGroupCollection.getLast()) {
                 info.append("\n\n");
             }
         }
         return info.toString();
     }
-
-
-
 
 
 }

@@ -42,8 +42,6 @@ public class ScannerManager {
                 ConsoleManager.printError("I can parse only char symbol! (letters, numbers and '_')");
                 if (filemode) throw new BadScriptException();
             }
-
-
         }
         return name;
     }
@@ -124,7 +122,7 @@ public class ScannerManager {
         return new Coordinates(x, y);
     }
 
-    public int askStudentCount() throws BadScriptException,NumberFormatException{
+    public int askStudentCount() throws BadScriptException, NumberFormatException {
         String strCount;
         int count;
         while (true) {
@@ -142,14 +140,14 @@ public class ScannerManager {
             } catch (IncorrectValueException e) {
                 ConsoleManager.printError("Are you sure it could be the number of students??");
                 if (filemode) throw new BadScriptException();
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 ConsoleManager.printError("Given String is not parsable to int");
             }
         }
         return count;
     }
 
-    public Integer askShouldBeExpelled() throws BadScriptException,NumberFormatException {
+    public Integer askShouldBeExpelled() throws BadScriptException, NumberFormatException {
         String strCountExpelled;
         Integer countExpelled;
         while (true) {
