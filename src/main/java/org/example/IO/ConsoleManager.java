@@ -1,8 +1,7 @@
 package org.example.IO;
 
-import org.example.CollectionManager;
-import org.example.CommandManager;
-import org.example.HistoryWriter;
+import org.example.utilities.CommandManager;
+import org.example.utilities.HistoryWriter;
 import org.example.Main;
 import org.example.exceptions.IncorrectScriptException;
 import org.example.exceptions.NoAccessToFileException;

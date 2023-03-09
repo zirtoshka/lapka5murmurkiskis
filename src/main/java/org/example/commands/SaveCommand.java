@@ -1,10 +1,8 @@
 package org.example.commands;
 
-import org.example.CollectionManager;
+import org.example.utilities.CollectionManager;
 import org.example.IO.ConsoleManager;
 import org.example.exceptions.ArgsException;
-
-import java.io.IOException;
 
 public class SaveCommand extends Command {
     private final CollectionManager collectionManager;

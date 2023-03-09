@@ -1,4 +1,4 @@
-package org.example;
+package org.example.utilities;
 
 import org.example.IO.ConsoleManager;
 import org.example.description_for_collection.StudyGroup;

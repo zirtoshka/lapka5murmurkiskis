@@ -1,9 +1,8 @@
 package org.example.commands;
 
-import org.example.CollectionManager;
+import org.example.utilities.CollectionManager;
 import org.example.IO.ConsoleManager;
 import org.example.exceptions.ArgsException;
-import org.example.exceptions.NotNullException;
 import org.example.exceptions.NullCollectionException;
 
 import java.time.LocalDateTime;

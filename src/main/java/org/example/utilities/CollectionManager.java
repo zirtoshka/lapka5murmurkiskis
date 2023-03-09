@@ -1,8 +1,7 @@
-package org.example;
+package org.example.utilities;
 
 import org.example.description_for_collection.StudyGroup;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayDeque;
 import java.util.HashSet;

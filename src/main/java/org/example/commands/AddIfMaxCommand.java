@@ -1,14 +1,12 @@
 package org.example.commands;
 
-import org.example.CollectionManager;
+import org.example.utilities.CollectionManager;
 import org.example.IO.ConsoleManager;
 import org.example.IO.ScannerManager;
 import org.example.description_for_collection.StudyGroup;
 import org.example.exceptions.ArgsException;
 import org.example.exceptions.BadScriptException;
 import org.example.exceptions.NullCollectionException;
-
-import java.util.Scanner;
 
 public class AddIfMaxCommand extends Command {
     private final CollectionManager collectionManager;

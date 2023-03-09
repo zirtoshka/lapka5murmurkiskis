@@ -2,9 +2,7 @@ package org.example.parserYAML;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.example.CollectionManager;
 import org.example.description_for_collection.StudyGroup;
 
 import java.io.File;

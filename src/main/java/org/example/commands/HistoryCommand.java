@@ -1,6 +1,6 @@
 package org.example.commands;
 
-import org.example.HistoryWriter;
+import org.example.utilities.HistoryWriter;
 import org.example.IO.ConsoleManager;
 import org.example.exceptions.ArgsException;
 
