@@ -12,7 +12,7 @@ public class CollectionManager {
     private Set<Integer> idSet = new HashSet<>();
 
     private Integer newId = 1;
-    private FileManager fileManager;
+    private final FileManager fileManager;
 
     private java.time.LocalDateTime lastInitTime;
     private LocalDateTime lastSaveTime;

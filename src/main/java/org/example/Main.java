@@ -15,12 +15,14 @@ public class Main {
     public static final String INPUT_COMMAND = "$ ";
     public static final String INPUT_INFO = "> ";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ArrayIndexOutOfBoundsException {
         Scanner userScanner = new Scanner(System.in);
         HistoryWriter historyWriter = new HistoryWriter();
         ScannerManager scannerManager = new ScannerManager(userScanner);
-        //FileManager fileManager=new FileManager(new Scanner(System.in).nextLine());
-        FileManager fileManager = new FileManager(args[0]);
+        FileManager fileManager=new FileManager(new Scanner(System.in).nextLine());
+         try {
+//             FileManager fileManager = new FileManager(args[0]);
+
         CollectionManager collectionManager = new CollectionManager(fileManager);
         collectionManager.loadFromFile();
         CommandManager commandManager = new CommandManager(
@@ -31,7 +33,10 @@ public class Main {
                 new HistoryCommand(historyWriter), new FilterContainsNameCommand(collectionManager), new PrintUniqueGroupAdminCommand(collectionManager),
                 new PrintFieldDescendingSemesterCommand(collectionManager));
         ConsoleManager consoleManager = new ConsoleManager(commandManager, scannerManager, userScanner, historyWriter);
-        consoleManager.toStartMode();
+        consoleManager.toStartMode();}
+         catch (ArrayIndexOutOfBoundsException e){
+             ConsoleManager.printError("I can't find name of file");
+         }
 
 
     }

@@ -102,10 +102,6 @@ public class StudyGroup {
         return studentsCount;
     }
 
-//    @Override
-//    public String toString() {
-//        return getId()+"\n"+getName()+"\n"+getCoordinates()+"\n"+getCreationDate()+"\n"+getStudentsCount()+"\n"+getShouldBeExpelled()+"\n"+getAverageMark()+"\n"+semesterEnum+"\n"+getGroupAdmin();
-//    }
 
     @Override
     public String toString() {

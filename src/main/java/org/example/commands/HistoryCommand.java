@@ -25,7 +25,7 @@ public class HistoryCommand extends Command {
             }
             return true;
         } catch (ArgsException e) {
-            ConsoleManager.printError("Usgae: '" + getName() + "'");
+            ConsoleManager.printError("Usage: '" + getName() + "'");
         }
         return false;
     }

@@ -1,4 +1,4 @@
-package org.example.parserYAML;
+package org.example.parser_YAML;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;

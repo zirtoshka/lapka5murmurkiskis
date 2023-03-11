@@ -16,11 +16,16 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ConsoleManager {
-    private CommandManager commandManager;
-    private ScannerManager scannerManager;
+    private final CommandManager commandManager;
+    private final ScannerManager scannerManager;
     private final Scanner scanner;
     private final HistoryWriter historyWriter;
     private final List<String> script = new LinkedList<>();
+    private final int NAME_CMD= 0;
+    private final int ARG_CMD =1;
+    private final int SUCCESSFUL_EXECUTION = 1;
+    private final int NOT_SUCCESSFUL_EXECUTION = 0;
+
 
     public ConsoleManager(CommandManager commandManager, ScannerManager scannerManager, Scanner scanner, HistoryWriter historyWriter) {
         this.commandManager = commandManager;
@@ -29,11 +34,11 @@ public class ConsoleManager {
         this.historyWriter = historyWriter;
     }
 
-    public static void printInfo(Object message) {
+    public static void printInfoPurple(Object message) {
         System.out.println("\u001B[35m" + message + "\u001B[0m");
     }
 
-    public static void printInfo1(Object message) {
+    public static void printInfoPurpleBackground(Object message) {
         System.out.println("\u001B[45m" + message + "\u001B[0m");
     }
 
@@ -51,13 +56,13 @@ public class ConsoleManager {
 
 
     public int launchCmd(String[] userCmd) throws IOException {
-        String cmd = userCmd[0];
-        String arg = userCmd[1];
+        String cmd = userCmd[NAME_CMD];
+        String arg = userCmd[ARG_CMD];
         switch (cmd) {
             case "help":
                 if (commandManager.help(arg)) {
                     historyWriter.addInHistory("help");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "":
@@ -66,43 +71,43 @@ public class ConsoleManager {
             case "info":
                 if (commandManager.info(arg)) {
                     historyWriter.addInHistory("info");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "show":
                 if (commandManager.show(arg)) {
                     historyWriter.addInHistory("show");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "add":
                 if (commandManager.add(arg)) {
                     historyWriter.addInHistory("add");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "update_by_id":
                 if (commandManager.updateById(arg)) {
                     historyWriter.addInHistory("update_by_id");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "remove_by_id":
                 if (commandManager.removeById(arg)) {
                     historyWriter.addInHistory("remove_by_id");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "clear":
                 if (commandManager.clear(arg)) {
                     historyWriter.addInHistory("clear");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "save":
                 if (commandManager.save(arg)) {
                     historyWriter.addInHistory("save");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "execute_script":
@@ -113,43 +118,43 @@ public class ConsoleManager {
             case "exit":
                 if (commandManager.exit(arg)) {
                     historyWriter.addInHistory("exit");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "head":
                 if (commandManager.head(arg)) {
                     historyWriter.addInHistory("head");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "add_if_max":
                 if (commandManager.addIfMax(arg)) {
                     historyWriter.addInHistory("add_if_max");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "history":
                 if (commandManager.history(arg)) {
                     historyWriter.addInHistory("history");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "filter_contains_name":
                 if (commandManager.filterContainsName(arg)) {
                     historyWriter.addInHistory("filter_contains_name");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "print_unique_group_admin":
                 if (commandManager.printUniqueAdmin(arg)) {
                     historyWriter.addInHistory("print_unique_group_admin");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "print_field_descending_semester_enum":
                 if (commandManager.printFieldDescendingSemester(arg)) {
                     historyWriter.addInHistory("print_field_descending_semester_enum");
-                    return 1;
+                    return SUCCESSFUL_EXECUTION;
                 }
                 break;
             default:
@@ -157,7 +162,7 @@ public class ConsoleManager {
                 ConsoleManager.printError("No such command as in list");
                 break;
         }
-        return 0;
+        return NOT_SUCCESSFUL_EXECUTION;
     }
 
     public void toStartMode() throws IOException {
@@ -167,7 +172,7 @@ public class ConsoleManager {
         do {
             System.out.print(Main.INPUT_COMMAND);
             userCmd = (scanner.nextLine().trim() + " ").split(" ", 2);
-            userCmd[1] = userCmd[1].trim();
+            userCmd[ARG_CMD] = userCmd[ARG_CMD].trim();
             cmdStatus = launchCmd(userCmd);
         } while (cmdStatus != 2);
 
@@ -181,7 +186,7 @@ public class ConsoleManager {
         script.add(arg);
         try {
             path = System.getenv("PWD") + "/" + arg;
-            File file = new File(arg);
+            File file = new File(path);
             if (file.exists() && !file.canRead()) throw new NoAccessToFileException();
             Scanner scriptScanner = new Scanner(file);
             if (!scriptScanner.hasNext()) throw new NoSuchElementException();
@@ -190,22 +195,22 @@ public class ConsoleManager {
             scannerManager.setFileMode();
             do {
                 userCmd = (scriptScanner.nextLine().trim() + " ").split(" ", 2);
-                userCmd[1] = userCmd[1].trim();
-                while (scriptScanner.hasNextLine() && userCmd[0].isEmpty()) {
+                userCmd[ARG_CMD] = userCmd[ARG_CMD].trim();
+                while (scriptScanner.hasNextLine() && userCmd[NAME_CMD].isEmpty()) {
                     userCmd = (scriptScanner.nextLine().trim() + " ").split(" ", 2);
-                    userCmd[1] = userCmd[1].trim();
+                    userCmd[ARG_CMD] = userCmd[ARG_CMD].trim();
                 }
                 System.out.println(Main.INPUT_COMMAND + String.join(" ", userCmd));
-                if (userCmd[0].equals("execute_script")) {
+                if (userCmd[NAME_CMD].equals("execute_script")) {
                     for (String scri : script) {
-                        if (userCmd[1].equals(scri)) throw new ScriptRecurentException();
+                        if (userCmd[ARG_CMD].equals(scri)) throw new ScriptRecurentException();
                     }
                 }
                 cmdStatus = launchCmd(userCmd);
-            } while (cmdStatus == 1 && scriptScanner.hasNextLine());
+            } while (cmdStatus == SUCCESSFUL_EXECUTION && scriptScanner.hasNextLine());
             scannerManager.setScanner(tmpScanner);
             scannerManager.setUserMode();
-            if (cmdStatus == 0 && !userCmd[0].equals("execute_script") && userCmd[1].isEmpty())
+            if (cmdStatus == NOT_SUCCESSFUL_EXECUTION && !userCmd[NAME_CMD].equals("execute_script") && userCmd[ARG_CMD].isEmpty())
                 throw new IncorrectScriptException();
             return cmdStatus;
         } catch (NoAccessToFileException e) {
@@ -221,7 +226,7 @@ public class ConsoleManager {
         } finally {
             script.remove(script.size() - 1);
         }
-        return 1;
+        return SUCCESSFUL_EXECUTION;
     }
 }
 
