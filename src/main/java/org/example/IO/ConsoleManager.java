@@ -1,5 +1,7 @@
 package org.example.IO;
 
+import org.example.commands.CommandEnum;
+import org.example.commands.FilterContainsNameCommand;
 import org.example.utilities.CommandManager;
 import org.example.utilities.HistoryWriter;
 import org.example.Main;
@@ -19,12 +21,31 @@ public class ConsoleManager {
     private final CommandManager commandManager;
     private final ScannerManager scannerManager;
     private final Scanner scanner;
+
     private final HistoryWriter historyWriter;
     private final List<String> script = new LinkedList<>();
-    private final int NAME_CMD= 0;
-    private final int ARG_CMD =1;
+    private final int NAME_CMD = 0;
+    private final int ARG_CMD = 1;
     private final int SUCCESSFUL_EXECUTION = 1;
     private final int NOT_SUCCESSFUL_EXECUTION = 0;
+
+
+    private final String ADD = "add";
+    private final String ADD_IF_MAX = "add_if_max";
+    private final String CLEAR = "clear";
+    private final String EXECUTE_SCRIPT = "execute_script";
+    private final String EXIT = "exit";
+    private final String FILTER_CONTAINS_NAME = "filter_contains_name";
+    private final String HEAD = "head";
+    private final String HELP = "help";
+    private final String HISTORY = "history";
+    private final String INFO = "info";
+    private final String PRINT_FIELD_DESCENDING_SEMESTER = "print_field_descending_semester_enum";
+    private final String PRINT_UNIQUE_GROUP_ADMIN = "print_unique_group_admin";
+    private final String REMOVE_BY_ID = "remove_by_id";
+    private final String SAVE = "save";
+    private final String SHOW = "show";
+    private final String UPDATE_BY_ID = "update_by_id";
 
 
     public ConsoleManager(CommandManager commandManager, ScannerManager scannerManager, Scanner scanner, HistoryWriter historyWriter) {
@@ -54,106 +75,105 @@ public class ConsoleManager {
         System.out.println("\u001B[33m" + message + "\u001B[0m");
     }
 
-
     public int launchCmd(String[] userCmd) throws IOException {
         String cmd = userCmd[NAME_CMD];
         String arg = userCmd[ARG_CMD];
         switch (cmd) {
-            case "help":
+            case HELP:
                 if (commandManager.help(arg)) {
-                    historyWriter.addInHistory("help");
+                    historyWriter.addInHistory(HELP);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
             case "":
                 ConsoleManager.printError("Well... This is an empty line... Maybe you want to ask something?");
                 break;
-            case "info":
+            case INFO:
                 if (commandManager.info(arg)) {
-                    historyWriter.addInHistory("info");
+                    historyWriter.addInHistory(INFO);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
-            case "show":
+            case SHOW:
                 if (commandManager.show(arg)) {
-                    historyWriter.addInHistory("show");
+                    historyWriter.addInHistory(SHOW);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
-            case "add":
+            case ADD:
                 if (commandManager.add(arg)) {
-                    historyWriter.addInHistory("add");
+                    historyWriter.addInHistory(ADD);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
-            case "update_by_id":
+            case UPDATE_BY_ID:
                 if (commandManager.updateById(arg)) {
-                    historyWriter.addInHistory("update_by_id");
+                    historyWriter.addInHistory(UPDATE_BY_ID);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
-            case "remove_by_id":
+            case REMOVE_BY_ID:
                 if (commandManager.removeById(arg)) {
-                    historyWriter.addInHistory("remove_by_id");
+                    historyWriter.addInHistory(REMOVE_BY_ID);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
-            case "clear":
+            case CLEAR:
                 if (commandManager.clear(arg)) {
-                    historyWriter.addInHistory("clear");
+                    historyWriter.addInHistory(CLEAR);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
-            case "save":
+            case SAVE:
                 if (commandManager.save(arg)) {
-                    historyWriter.addInHistory("save");
+                    historyWriter.addInHistory(SAVE);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
-            case "execute_script":
+            case EXECUTE_SCRIPT:
                 if (commandManager.executeScript(arg)) {
-                    historyWriter.addInHistory("execute_script");
+                    historyWriter.addInHistory(EXECUTE_SCRIPT);
                     return scriptMode(arg);
                 }
-            case "exit":
+            case EXIT:
                 if (commandManager.exit(arg)) {
-                    historyWriter.addInHistory("exit");
+                    historyWriter.addInHistory(EXIT);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
-            case "head":
+            case HEAD:
                 if (commandManager.head(arg)) {
-                    historyWriter.addInHistory("head");
+                    historyWriter.addInHistory(HEAD);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
-            case "add_if_max":
+            case ADD_IF_MAX:
                 if (commandManager.addIfMax(arg)) {
-                    historyWriter.addInHistory("add_if_max");
+                    historyWriter.addInHistory(ADD_IF_MAX);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
-            case "history":
+            case HISTORY:
                 if (commandManager.history(arg)) {
-                    historyWriter.addInHistory("history");
+                    historyWriter.addInHistory(HISTORY);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
-            case "filter_contains_name":
+            case FILTER_CONTAINS_NAME:
                 if (commandManager.filterContainsName(arg)) {
-                    historyWriter.addInHistory("filter_contains_name");
+                    historyWriter.addInHistory(FILTER_CONTAINS_NAME);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
-            case "print_unique_group_admin":
+            case PRINT_UNIQUE_GROUP_ADMIN:
                 if (commandManager.printUniqueAdmin(arg)) {
-                    historyWriter.addInHistory("print_unique_group_admin");
+                    historyWriter.addInHistory(PRINT_UNIQUE_GROUP_ADMIN);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
-            case "print_field_descending_semester_enum":
+            case PRINT_FIELD_DESCENDING_SEMESTER:
                 if (commandManager.printFieldDescendingSemester(arg)) {
-                    historyWriter.addInHistory("print_field_descending_semester_enum");
+                    historyWriter.addInHistory(PRINT_FIELD_DESCENDING_SEMESTER);
                     return SUCCESSFUL_EXECUTION;
                 }
                 break;
@@ -164,6 +184,7 @@ public class ConsoleManager {
         }
         return NOT_SUCCESSFUL_EXECUTION;
     }
+
 
     public void toStartMode() throws IOException {
         String[] userCmd = {"", ""};

@@ -137,3 +137,26 @@
     eyeColor: "GREEN"
     hairColor: "RED"
     nationality: "VATICAN"
+- id: 7
+  name: "123"
+  coordinates:
+    coordinatesX: 4.0
+    coordinatesY: 2.0
+  creationDate:
+  - 2023
+  - 3
+  - 12
+  - 1
+  - 14
+  - 36
+  - 200304000
+  studentsCount: 123
+  shouldBeExpelled: 321
+  averageMark: 123.0
+  semesterEnum: "FIRST"
+  groupAdmin:
+    name: "ads"
+    birthday: 1041368400000
+    eyeColor: "GREEN"
+    hairColor: "RED"
+    nationality: "VATICAN"
