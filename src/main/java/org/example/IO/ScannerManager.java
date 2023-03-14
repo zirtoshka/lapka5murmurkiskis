@@ -15,8 +15,8 @@ public class ScannerManager {
     private final Double MAX_X = 576D;
     private final Float MIN_Y = -596F;
     private boolean filemode;
-    private final Pattern patternSymbols = Pattern.compile("\\w*");
-    private final Pattern patternNumber = Pattern.compile("(-?)\\d+(.\\d+)?");
+    public static final Pattern patternSymbols = Pattern.compile("\\w*");
+    public static final Pattern patternNumber = Pattern.compile("(-?)\\d+(.\\d+)?");
 
     private Scanner scanner;
 
@@ -56,17 +56,18 @@ public class ScannerManager {
 
 
     public Double askCoordinatesX() throws BadScriptException {
-        String askX;
+        String strX;
+        //TODO: rework strX
         Double x;
         while (true) {
             try {
                 System.out.println("Enter X coord: ");
                 System.out.print(Main.INPUT_INFO);
-                askX = scanner.nextLine().trim();
-                if (askX.equals("")) throw new NotNullException();
-                if (!patternNumber.matcher(askX).matches()) throw new WrongNameException();
-                x = Double.parseDouble(askX);
-//                if (Math.abs(x-MAX_X)<=0.00001) throw new IncorrectValueException();
+                strX = scanner.nextLine().trim();
+                if (strX.equals("")) throw new NotNullException();
+                if (!patternNumber.matcher(strX).matches()) throw new WrongNameException();
+                x = Double.parseDouble(strX);
+                if (x > MAX_X) throw new IncorrectValueException();
                 break;
             } catch (NumberFormatException e) {
                 ConsoleManager.printError("Given String is not parsable to Double");
@@ -77,26 +78,27 @@ public class ScannerManager {
             } catch (WrongNameException e) {
                 ConsoleManager.printError("hmm.. You use symbols not for numbers... why?");
                 if (filemode) throw new BadScriptException();
-//            } catch (IncorrectValueException e) {
-//                ConsoleManager.printError("This value has to be less than " + MAX_X);
-//                if (filemode) throw new BadScriptException();
+            } catch (IncorrectValueException e) {
+                ConsoleManager.printError("This value has to be less than " + MAX_X);
+                if (filemode) throw new BadScriptException();
             }
         }
         return x;
+
     }
 
     public Float askCoordinatesY() throws BadScriptException {
-        String askY;
+        String strY;
         Float y;
         while (true) {
             try {
                 System.out.println("Enter Y coord:");
                 System.out.print(Main.INPUT_INFO);
-                askY = scanner.nextLine().trim();
-                if (askY.equals("")) throw new NotNullException();
-                if (!patternNumber.matcher(askY).matches()) throw new WrongNameException();
-                y = Float.parseFloat(askY);
-//                if (y < MIN_Y) throw new IncorrectValueException();
+                strY = scanner.nextLine().trim();
+                if (strY.equals("")) throw new NotNullException();
+                if (!patternNumber.matcher(strY).matches()) throw new WrongNameException();
+                y = Float.parseFloat(strY);
+                if (y < MIN_Y) throw new IncorrectValueException();
                 break;
             } catch (NumberFormatException e) {
                 ConsoleManager.printError("Given String is not parsable to Float");
@@ -107,32 +109,20 @@ public class ScannerManager {
             } catch (WrongNameException e) {
                 ConsoleManager.printError("hmm.. You use symbols not for numbers... why?");
                 if (filemode) throw new BadScriptException();
+            } catch (IncorrectValueException e) {
+                ConsoleManager.printError("This value has to be more than " + MIN_Y);
+                if (filemode) throw new BadScriptException();
             }
-//            } catch (IncorrectValueException e) {
-//                ConsoleManager.printError("This value has to be more than " + MIN_Y);
-//                if (filemode) throw new BadScriptException();
-//            }
 
         }
         return y;
     }
 
     public Coordinates askCoordinates() throws BadScriptException {
-        Coordinates userCoordinates = new Coordinates();
-//        try {//обязательно нужен ли try-catch
-        while (!userCoordinates.setX(askCoordinatesX())) {
-//            ConsoleManager.printInfoPurpleBackground("Hmmmmmmmmmm??");
-            if (filemode) throw new BadScriptException();
-        }
-        if (filemode) System.out.println(userCoordinates.getCoordinatesX());
-        while (!userCoordinates.setY(askCoordinatesY())) {
-//                ConsoleManager.printInfoPurpleBackground("lolooolloloollolool");
-            if (filemode) throw new BadScriptException();
-        }
-        if (filemode) System.out.println(userCoordinates.getCoordinatesY());
+        Double x = askCoordinatesX();
+        Float y = askCoordinatesY();
+        return new Coordinates(x, y);
 
-
-        return userCoordinates;
     }
 
     public int askStudentCount() throws BadScriptException, NumberFormatException {
@@ -148,8 +138,8 @@ public class ScannerManager {
                 if (count <= 0) throw new IncorrectValueException();
                 break;
             } catch (NotNullException e) {
-                count = 0;
-                break;
+                ConsoleManager.printError("Are you sure it could be the number of students??");
+                if (filemode) throw new BadScriptException();
             } catch (IncorrectValueException e) {
                 ConsoleManager.printError("Are you sure it could be the number of students??");
                 if (filemode) throw new BadScriptException();
