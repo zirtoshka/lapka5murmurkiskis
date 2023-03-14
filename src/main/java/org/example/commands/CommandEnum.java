@@ -18,7 +18,7 @@ public enum CommandEnum {
     SHOW("show"),
     UPDATE_BY_ID("update_by_id");
     private String name;
-    private Integer id;
+
 
     CommandEnum(String name) {
         this.name=name;

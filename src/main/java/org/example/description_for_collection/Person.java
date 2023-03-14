@@ -1,5 +1,9 @@
 package org.example.description_for_collection;
 
+import org.example.IO.ConsoleManager;
+import org.example.IO.ScannerManager;
+import org.example.exceptions.NotNullException;
+
 import java.util.Date;
 
 public class Person {
@@ -9,7 +13,9 @@ public class Person {
     private ColorHair hairColor; //Поле может быть null
     private Country nationality; //Поле может быть null
 
-    public Person(){}
+    public Person() {
+    }
+
     public Person(String name, java.util.Date birthday, ColorEye eyeColor, ColorHair hairColor, Country nationality) {
         this.name = name;
         this.birthday = birthday;
@@ -19,7 +25,7 @@ public class Person {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name=name;
     }
 
     public String getName() {
@@ -27,15 +33,15 @@ public class Person {
     }
 
     public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+        this.birthday=birthday;
     }
 
     public Date getBirthday() {
         return birthday;
     }
 
-    public void setEyeColor(ColorEye eyeColor){
-        this.eyeColor=eyeColor;
+    public void setEyeColor(ColorEye eyeColor) {
+        this.eyeColor = eyeColor;
     }
 
     public ColorEye getEyeColor() {

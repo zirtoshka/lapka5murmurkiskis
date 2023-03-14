@@ -25,7 +25,10 @@ public class Main {
 //             FileManager fileManager = new FileManager(args[0]);
 
             CollectionManager collectionManager = new CollectionManager(fileManager);
-            collectionManager.loadFromFile();
+            if (!fileManager.isFileEmpty()) {
+                collectionManager.loadFromFile();
+            }else {collectionManager.createCollection();}
+
             CommandManager commandManager = new CommandManager(
                     new HelpCommand(), new InfoCommand(collectionManager), new ShowCommand(collectionManager),
                     new AddCommand(collectionManager, scannerManager), new UpdateByIdCommand(collectionManager, scannerManager),

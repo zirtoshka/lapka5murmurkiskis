@@ -7,6 +7,7 @@ import org.example.parser_YAML.ReadYAMLParser;
 import org.example.parser_YAML.WriteYAMLParses;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayDeque;
 
@@ -24,7 +25,10 @@ public class FileManager {
         return fileName;
     }
     public String getPath(){return path;}
-
+    public boolean isFileEmpty() {
+        File file = new File(path);
+        return file.length() == 0;
+    }
     public ArrayDeque<StudyGroup> loadFromFile() {
         ReadYAMLParser yaml = new ReadYAMLParser();
         ArrayDeque<StudyGroup> studyGroupCollection = null;

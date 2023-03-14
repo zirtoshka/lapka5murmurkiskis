@@ -12,8 +12,8 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class ScannerManager {
-    private final double MAX_X = 576;
-    private final float MIN_Y = -596;
+    private final Double MAX_X = 576D;
+    private final Float MIN_Y = -596F;
     private boolean filemode;
     private final Pattern patternSymbols = Pattern.compile("\\w*");
     private final Pattern patternNumber = Pattern.compile("(-?)\\d+(.\\d+)?");
@@ -66,7 +66,7 @@ public class ScannerManager {
                 if (askX.equals("")) throw new NotNullException();
                 if (!patternNumber.matcher(askX).matches()) throw new WrongNameException();
                 x = Double.parseDouble(askX);
-                if (x > MAX_X) throw new IncorrectValueException();
+//                if (Math.abs(x-MAX_X)<=0.00001) throw new IncorrectValueException();
                 break;
             } catch (NumberFormatException e) {
                 ConsoleManager.printError("Given String is not parsable to Double");
@@ -77,9 +77,9 @@ public class ScannerManager {
             } catch (WrongNameException e) {
                 ConsoleManager.printError("hmm.. You use symbols not for numbers... why?");
                 if (filemode) throw new BadScriptException();
-            } catch (IncorrectValueException e) {
-                ConsoleManager.printError("This value has to be less than " + MAX_X);
-                if (filemode) throw new BadScriptException();
+//            } catch (IncorrectValueException e) {
+//                ConsoleManager.printError("This value has to be less than " + MAX_X);
+//                if (filemode) throw new BadScriptException();
             }
         }
         return x;
@@ -96,7 +96,7 @@ public class ScannerManager {
                 if (askY.equals("")) throw new NotNullException();
                 if (!patternNumber.matcher(askY).matches()) throw new WrongNameException();
                 y = Float.parseFloat(askY);
-                if (y < MIN_Y) throw new IncorrectValueException();
+//                if (y < MIN_Y) throw new IncorrectValueException();
                 break;
             } catch (NumberFormatException e) {
                 ConsoleManager.printError("Given String is not parsable to Float");
@@ -107,19 +107,32 @@ public class ScannerManager {
             } catch (WrongNameException e) {
                 ConsoleManager.printError("hmm.. You use symbols not for numbers... why?");
                 if (filemode) throw new BadScriptException();
-            } catch (IncorrectValueException e) {
-                ConsoleManager.printError("This value has to be more than " + MIN_Y);
-                if (filemode) throw new BadScriptException();
             }
+//            } catch (IncorrectValueException e) {
+//                ConsoleManager.printError("This value has to be more than " + MIN_Y);
+//                if (filemode) throw new BadScriptException();
+//            }
 
         }
         return y;
     }
 
     public Coordinates askCoordinates() throws BadScriptException {
-        Double x = askCoordinatesX();
-        Float y = askCoordinatesY();
-        return new Coordinates(x, y);
+        Coordinates userCoordinates = new Coordinates();
+//        try {//обязательно нужен ли try-catch
+        while (!userCoordinates.setX(askCoordinatesX())) {
+//            ConsoleManager.printInfoPurpleBackground("Hmmmmmmmmmm??");
+            if (filemode) throw new BadScriptException();
+        }
+        if (filemode) System.out.println(userCoordinates.getCoordinatesX());
+        while (!userCoordinates.setY(askCoordinatesY())) {
+//                ConsoleManager.printInfoPurpleBackground("lolooolloloollolool");
+            if (filemode) throw new BadScriptException();
+        }
+        if (filemode) System.out.println(userCoordinates.getCoordinatesY());
+
+
+        return userCoordinates;
     }
 
     public int askStudentCount() throws BadScriptException, NumberFormatException {
@@ -160,8 +173,9 @@ public class ScannerManager {
                 if (countExpelled <= 0) throw new IncorrectValueException();
                 break;
             } catch (NotNullException e) {
-                ConsoleManager.printError("It can't be empty!!!");
-                if (filemode) throw new BadScriptException();
+                return null;
+//                ConsoleManager.printError("It can't be empty!!!");
+//                if (filemode) throw new BadScriptException();
             } catch (IncorrectValueException e) {
                 ConsoleManager.printError("It has to be more than 0");
                 if (filemode) throw new BadScriptException();
@@ -219,10 +233,12 @@ public class ScannerManager {
     }
 
     public Person askPerson() throws BadScriptException {
-        return new Person(askPersonName(), askBirthday(), askEyeColor(), askHairColor(), askNationality());
+        if(askQuestion("Is admin exist?")){
+        return new Person(askPersonName(),askBirthday(),askEyeColor(),askHairColor(),askNationality());}
+        return null;
     }
 
-    public java.util.Date askBirthday() throws BadScriptException {
+    public Date askBirthday() throws BadScriptException {
         String askDate;
         Date date;
         while (true) {
@@ -235,13 +251,14 @@ public class ScannerManager {
                 date = new Date(askDate);
                 break;
             } catch (NotNullException e) {
-                ConsoleManager.printError("It can't be empty!");
-                if (filemode) throw new BadScriptException();
+//                ConsoleManager.printError("It can't be empty!");
+                return null;
+//                if (filemode) throw new BadScriptException();
             } catch (IllegalArgumentException e) {
                 ConsoleManager.printError("You use a very strange format");
                 if (filemode) throw new BadScriptException();
-            }
-        }
+            }}
+
         return date;
     }
 
@@ -281,8 +298,9 @@ public class ScannerManager {
                 colorHair = ColorHair.valueOf(askHairColor.toUpperCase());
                 break;
             } catch (NotNullException e) {
-                ConsoleManager.printError("It can't be empty!!");
-                if (filemode) throw new BadScriptException();
+                return null;
+//                ConsoleManager.printError("It can't be empty!!");
+//                if (filemode) throw new BadScriptException();
             } catch (IllegalArgumentException e) {
                 ConsoleManager.printError("I don't know this hair color(");
                 if (filemode) throw new BadScriptException();
@@ -304,8 +322,9 @@ public class ScannerManager {
                 country = Country.valueOf(askCountry.toUpperCase());
                 break;
             } catch (NotNullException e) {
-                ConsoleManager.printError("It can't be empty!!");
-                if (filemode) throw new BadScriptException();
+                return null;
+//                ConsoleManager.printError("It can't be empty!!");
+//                if (filemode) throw new BadScriptException();
             } catch (IllegalArgumentException e) {
                 ConsoleManager.printError("I don't know this nationality(");
                 if (filemode) throw new BadScriptException();
